@@ -1,0 +1,32 @@
+footer {
+  background-image: url(./backgroundfooter.jpg);
+  height: 30vh;
+  padding-top: 4rem;
+  width: 100%;
+  bottom: 0;
+}
+.container-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.grid-footer {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+  gap: 5rem;
+
+  margin-left: 5%;
+  margin-right: 5%;
+}
+.links-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.links-container a:hover {
+  cursor: pointer;
+  color: #6d0110;
+}

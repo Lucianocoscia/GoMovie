@@ -1,0 +1,26 @@
+.detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8%;
+  margin-left: 10%;
+  margin-right: 10%;
+}
+/* .loading {
+  margin-top: 10%;
+} */
+.loader {
+  width: 60px;
+  height: 60px;
+  border: 10px solid #6d0110;
+  border-top-color: darkred;
+  animation: spin013151 1s linear infinite;
+  border-radius: 100%;
+  translate: 0 500%;
+}
+
+@keyframes spin013151 {
+  to {
+    transform: rotate(360deg);
+  }
+}

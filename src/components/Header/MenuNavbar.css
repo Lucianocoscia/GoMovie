@@ -1,0 +1,88 @@
+a,
+button {
+  cursor: pointer;
+  text-decoration: none;
+  color: #fff;
+}
+
+nav {
+  position: fixed;
+  top: 0px;
+  padding-left: 0;
+  background-color: #000000f8;
+  height: 100%;
+  width: 350px;
+  padding-top: 100px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: left;
+}
+
+.navigation {
+  position: absolute;
+  left: -100%;
+  width: 400px;
+  transition: 0.5s;
+}
+
+.navigation nav ul li {
+  color: #fff;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+  text-transform: uppercase;
+  list-style-type: none;
+  font-size: 1.5em;
+  height: 100%;
+  padding: 20px 30px;
+  width: 100%;
+}
+
+.hamburger,
+.bar {
+  position: absolute;
+  /* top: 10; */
+  z-index: 100;
+}
+
+.hamburger {
+  left: 3.5%;
+  width: 30px;
+  height: 30px;
+  border: 0;
+  background: 0 0;
+}
+
+.bar {
+  top: 3px;
+  background: #fff;
+  width: 100%;
+  height: 4px;
+  transition: all 0.3s ease-in;
+}
+
+#bar2 {
+  top: 11px;
+}
+
+#bar3 {
+  top: 19px;
+}
+
+.navigation.active {
+  left: 0;
+}
+
+.hamburger.open #bar1 {
+  background-color: #fff;
+  transform: rotate(45deg) translate(6px, 5px);
+}
+
+.hamburger.open #bar2 {
+  background-color: transparent;
+}
+
+.hamburger.open #bar3 {
+  background-color: #fff;
+  transform: rotate(-45deg) translate(6px, -5px);
+}

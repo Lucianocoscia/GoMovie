@@ -1,0 +1,34 @@
+header {
+  height: 9vh;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  /* background-color: #00000099; */
+  /* background-color: #000000f8; */
+  /* background-color: transparent; */
+  color: white;
+  /* box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.28); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+.user-icon {
+  cursor: pointer;
+  margin-right: 2rem;
+  /* box-shadow: 0 1px 6px 0 rgba(215, 205, 205, 0.28); */
+  width: 25px;
+  height: 25px;
+  transition: all 0.5s;
+}
+.user-icon:hover {
+  transform: scale(1.1);
+}
+
+header.active {
+  background-color: #000000dc;
+  box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
+  height: 8vh;
+  transition: all 0.4s ease-in-out;
+}
