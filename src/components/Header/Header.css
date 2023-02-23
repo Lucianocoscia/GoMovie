@@ -16,10 +16,14 @@ header {
 }
 .user-icon {
   cursor: pointer;
-  margin-right: 2rem;
-  box-shadow: 0 1px 6px 0 rgba(2, 2, 2, 0.28);
-  width: 25px;
-  height: 25px;
+  margin-right: 2% !important;
+  box-shadow: 0 1px 6px 0 rgba(248, 248, 248, 0.28);
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 1) 1%,
+    rgba(109, 1, 15, 1) 100%,
+    rgba(0, 0, 0, 1) 100%
+  ) !important;
   transition: all 0.5s;
 }
 .user-icon:hover {
@@ -31,4 +35,29 @@ header.active {
   box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
   height: 8vh;
   transition: all 0.4s ease-in-out;
+}
+.search-icon {
+  margin: auto;
+  cursor: pointer;
+  transition: all 0.5s !important;
+}
+.icon-size {
+  width: 25px !important;
+  height: 25px !important;
+}
+.search-icon:hover {
+  transform: scale(1.1);
+}
+/* Color background del menu del avatar */
+.css-6hp17o-MuiList-root-MuiMenu-list {
+  background-color: #000000dc;
+  color: #fff;
+  border: none;
+  /* opacity: 0.8; */
+}
+/* .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
+  color: aliceblue;
+} */
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
+  background-color: #0000003c !important;
 }

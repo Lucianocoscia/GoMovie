@@ -3,6 +3,7 @@ footer {
   height: 30vh;
   padding-top: 4rem;
   width: 100%;
+  /* position: fixed; */
   bottom: 0;
 }
 .container-grid {

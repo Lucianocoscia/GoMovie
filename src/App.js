@@ -16,6 +16,7 @@ import Resultados from "./components/Resultados/Resultados";
 import Home from "./pages/Home/Home";
 import Favoritos from "./components/Favoritos/Favoritos";
 import Registro from "./components/Registro/Registro";
+import Buscador from "./pages/Buscador/Buscador";
 
 //Styles
 import "./index.css";
@@ -107,7 +108,6 @@ function App() {
           element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs} />}
         />
         <Route path="/detail/:id" element={<ItemDetailContainer />} />
-        <Route path="/resultados/:keyword" element={<Resultados />} />
         <Route
           path="/favoritos"
           element={
@@ -117,6 +117,7 @@ function App() {
             />
           }
         />
+        <Route path="/buscador" element={<Buscador />} />
       </Routes>
       <Footer />
     </>

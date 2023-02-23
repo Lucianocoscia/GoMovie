@@ -1,10 +1,11 @@
+/* css para input search */
 .group {
   display: flex;
   line-height: 28px;
   align-items: center;
   position: relative;
-  max-width: 190px;
-  margin-right: 1.5rem;
+  max-width: 100%;
+  /* margin-right: 1.5rem; */
 }
 
 .input {
@@ -40,6 +41,23 @@ input:hover {
   width: 1rem;
   height: 1rem;
 }
-.search-icon {
-  margin: auto;
+
+/* estilos para contenedor  */
+.search-container {
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 10%;
+  min-height: 31vh;
+}
+
+.grid-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 1fr;
+  gap: 1rem;
+  height: 100%;
+  padding-top: 100px;
+  margin-left: 15%;
+  margin-right: 15%;
 }
