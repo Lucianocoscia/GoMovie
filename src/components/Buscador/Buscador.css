@@ -40,3 +40,6 @@ input:hover {
   width: 1rem;
   height: 1rem;
 }
+.search-icon {
+  margin: auto;
+}

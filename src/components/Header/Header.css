@@ -17,7 +17,7 @@ header {
 .user-icon {
   cursor: pointer;
   margin-right: 2rem;
-  /* box-shadow: 0 1px 6px 0 rgba(215, 205, 205, 0.28); */
+  box-shadow: 0 1px 6px 0 rgba(2, 2, 2, 0.28);
   width: 25px;
   height: 25px;
   transition: all 0.5s;

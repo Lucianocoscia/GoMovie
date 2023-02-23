@@ -43,7 +43,7 @@ const TopRatedTv = () => {
     // install Swiper modules
     modules={[Navigation, Pagination, Scrollbar, A11y]}
     spaceBetween={20}
-    slidesPerView={6.5}
+    slidesPerView={5.5}
     navigation
     // pagination={{ clickable: true }}
     // scrollbar={{ draggable: true }}

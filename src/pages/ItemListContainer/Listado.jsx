@@ -50,7 +50,7 @@ const Listado = ({addOrRemoveFromFavs}) => {
         <TopRated/>
       </div>
 
-      <div className=" swiper-movies">
+      <div className=" swiper-movies swiper-movies-1">
         <h5>Trending TV</h5>
         <PopularTv/>
       </div>

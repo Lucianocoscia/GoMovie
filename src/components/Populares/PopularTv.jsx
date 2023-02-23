@@ -42,8 +42,8 @@ const PopularTv = () => {
   
     // install Swiper modules
     modules={[Navigation, Pagination, Scrollbar, A11y]}
-    spaceBetween={20}
-    slidesPerView={6.5}
+    spaceBetween={10}
+    slidesPerView={4.5}
     navigation
     // pagination={{ clickable: true }}
     // scrollbar={{ draggable: true }}
