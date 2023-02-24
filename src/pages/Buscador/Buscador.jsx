@@ -97,7 +97,7 @@ const Buscador = () => {
                 
                     <>
                         {moviesResults.length === 0 && <h1>No hay resultados</h1> }
-                        <div>Buscaste: <em>{keywordValue}</em></div>
+                        <div className='p-3'>Buscaste: <em>{keywordValue}</em></div>
 
                         <div className='grid-list-results'>
                             {moviesResults.map((movieSearch, index)=>{

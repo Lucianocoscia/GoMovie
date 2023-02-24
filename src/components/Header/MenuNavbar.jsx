@@ -11,9 +11,9 @@ const MenuNavbar = () => {
         document.querySelector('.navigation').classList.toggle('active')
     }
 
-    function refreshPage() {
-        window.location.reload(true);
-      }
+    // function refreshPage() {
+    //     window.location.reload(true);
+    //   }
   return (
     <>
     <button className="hamburger" onClick={show}>
@@ -25,8 +25,8 @@ const MenuNavbar = () => {
     <div className="navigation">
         <nav>
             <ul >
-                <li onClick={show && refreshPage}  className='nav-item'><Link to='/'>Home</Link></li>
-                <li onClick={show && refreshPage } className='nav-item'><Link to='/listado'> Listado </Link></li>
+                <li onClick={show} className='nav-item'><Link to='/'>Home</Link></li>
+                <li onClick={show } className='nav-item'><Link to='/listado'> Listado </Link></li>
                 {/* <li onClick={show } className='nav-item'><a href='/listado'> Listado </a></li> */}
                 <li onClick={show } className='nav-item'><Link to='/favoritos'>Favoritos</Link></li>
                 <li onClick={show} className='nav-item'><Link to='/contacto'>Contacto</Link></li>

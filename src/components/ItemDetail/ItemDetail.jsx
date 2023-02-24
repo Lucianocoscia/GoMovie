@@ -1,6 +1,9 @@
 import React from 'react'
 import {  useEffect , useState } from 'react';
 import '../../pages/ItemDetailContainer/ItemDetail.css';
+import Trailer from './Trailer';
+import Casts from './Casts';
+import Similar from './Similar';
 
 const ItemDetail = ({movie}) => {
 
@@ -14,15 +17,62 @@ const ItemDetail = ({movie}) => {
   if(loader){
     return(
         <>
+        <div className='container-loader container'>
           <div className="loader"></div>
 
+        </div>
         </>
     )
-  }else{
-    return (
-    <>
-        <div>
-            <h2>Titulo: {movie.original_title} </h2>
+    }else{
+
+      return (
+      <>
+          <div  className='background-detail'><img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" /></div>
+
+          <section className='detail-container container'>
+
+            <div className='grid-container'>
+
+              <div className='detail-poster-container'><img className='detail-poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title}  /></div>
+
+              <div className='flex-info-detail'>
+                <h1 className='detail-title'> {movie.original_title}</h1>
+                <div >{movie.genres.map(oneGenre =>
+                                <button className='detail-button-genre' key={oneGenre.id }> {oneGenre.name}</button>)
+                            }</div>
+                <p className='detail-overview'>{movie.overview}</p>
+
+                
+                <div>
+                  <h3 >Casts</h3>
+                  <div className='grid-casts'>
+                    <Casts/>
+                  </div>
+                  
+                  
+                </div>
+              </div>
+            </div> 
+          </section>
+
+          <section className='container'>
+              <Trailer /> 
+          </section>
+          <section className='container mb-5' >
+            <div>
+              <h5>Similar</h5>
+              <Similar />
+            </div>
+          </section>
+      </>
+    )
+    }
+
+}
+
+export default ItemDetail
+
+            {/* <h2>Titulo: {movie.original_title} </h2>
             <div className='row'>
                 <div className='col-4'>
                     <img className='img-fluid' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title} />
@@ -39,13 +89,4 @@ const ItemDetail = ({movie}) => {
                             }
                         </ul>
                 </div>
-            </div>
-            
-        </div>
-    </>
-  )
-  }
-
-}
-
-export default ItemDetail
+            </div> */}

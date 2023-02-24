@@ -34,11 +34,11 @@ const ItemDetailContainer = () => {
   return (
     <>
      {!token  && <Navigate to='/'/>}
-     <div className='detail-container'>
-
+     
         <ItemDetail movie = {movieID} />
+
  
-      </div>
+      
     </>
     
   )

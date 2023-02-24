@@ -61,3 +61,6 @@ header.active {
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
   background-color: #0000003c !important;
 }
+.css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback {
+  height: 60% !important;
+}

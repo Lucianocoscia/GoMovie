@@ -1,10 +1,9 @@
 import React from 'react'
+import { useParams } from 'react-router-dom';
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import swAlert from "@sweetalert/with-react";
-
 import Item from "../../components/Item/Item";
-
 
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
@@ -16,34 +15,35 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-
-const PopularTv = () => {
-
-    const [popularTv, setPopularTv] = useState([]);
-
-    useEffect(() => {
-      const endPoint = 'https://api.themoviedb.org/3/tv/popular?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1'
-
-      axios.get(endPoint).then((response) => {
-        const apiData = response.data;
-        setPopularTv(apiData.results);
-        console.log(apiData);
-      }).catch((error) => {
-        // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-      })
   
-    },[setPopularTv])
-    
-    const typeOfFilm = 'tv'
+
+const Similar = () => {
+
+    let { id } = useParams();
+    const [similarMovies, setSimilarMovies] = useState([]);
+  
+      let endpointSimilar = ` https://api.themoviedb.org/3/movie/${id}/similar?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1`
+
+      
+      useEffect(()=>{
+          axios.get(endpointSimilar).then((response) => {
+            const similarMovie = response.data;
+            setSimilarMovies(similarMovie.results);
+            console.log(similarMovie);
+          }).catch((error) => {
+            swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          })
+      
+        }, []);
+
   return (
     <>
     <Swiper
   
     // install Swiper modules
     modules={[Navigation, Pagination, Scrollbar, A11y]}
-    spaceBetween={10}
-    slidesPerView={4.3}
+    spaceBetween={20}
+    slidesPerView={5.5}
     navigation
     // pagination={{ clickable: true }}
     // scrollbar={{ draggable: true }}
@@ -52,11 +52,10 @@ const PopularTv = () => {
     >
     
     {
-        popularTv.map((oneMovie, index)=>{
+        similarMovies.map((oneMovie, index)=>{
             return(
                 <SwiperSlide key={index}>      
                   <Item 
-                  typeOfFilm= {typeOfFilm}
                     id= {oneMovie.id}
                     title={oneMovie.title}
                     overview={oneMovie.overview.substring(0, 100)}
@@ -74,4 +73,4 @@ const PopularTv = () => {
   )
 }
 
-export default PopularTv
+export default Similar
