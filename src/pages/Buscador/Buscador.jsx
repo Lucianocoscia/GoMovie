@@ -5,7 +5,7 @@ import {Navigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
-
+import ViewMore from '../../components/ViewMore/ViewMore';
 
 const Buscador = () => {
 
@@ -60,6 +60,18 @@ const Buscador = () => {
     let token=  sessionStorage.getItem("token");
 
 
+    // const loadMore = () =>{
+    //     let params = (new URL('https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate')).searchParams;
+    //     let page = params.get("page");
+    //     console.log(page);
+
+    //     if(page ){
+
+    //     } else{
+    //         let endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
+            
+    //     }
+    // }
   return (
         <>
             {!token  && <Navigate to='/'/>}
@@ -117,6 +129,7 @@ const Buscador = () => {
                     </>
                     }
             </div>
+            <ViewMore />{/* loadMore={loadMore} */}
         </>
   )
 }
