@@ -4,8 +4,9 @@ import '../../pages/ItemDetailContainer/ItemDetail.css';
 import Trailer from './Trailer';
 import Casts from './Casts';
 import Similar from './Similar';
+import { apiConfig } from '../../config/config';
 
-const ItemDetail = ({movie}) => {
+const ItemDetail = ({detailID}) => {
 
   const [loader, setLoader] = useState(true); 
   useEffect (() => {
@@ -27,20 +28,20 @@ const ItemDetail = ({movie}) => {
 
       return (
       <>
-          <div  className='background-detail'><img src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt="" /></div>
+          <div  className='background-detail'><img src={`${apiConfig.originalImage(detailID.backdrop_path)}`} alt="" /></div>
 
           <section className='detail-container container'>
 
             <div className='grid-container'>
 
-              <div className='detail-poster-container'><img className='detail-poster' src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie.original_title}  /></div>
+              <div className='detail-poster-container'><img className='detail-poster' src={`${apiConfig.w500Image(detailID.poster_path)}`} alt={detailID.original_title}  /></div>
 
               <div className='flex-info-detail'>
-                <h1 className='detail-title'> {movie.original_title}</h1>
-                <div >{movie.genres.map(oneGenre =>
+                <h1 className='detail-title'> {detailID.original_title || detailID.name}</h1>
+                <div >{detailID.genres.map(oneGenre =>
                                 <button className='detail-button-genre' key={oneGenre.id }> {oneGenre.name}</button>)
                             }</div>
-                <p className='detail-overview'>{movie.overview}</p>
+                <p className='detail-overview'>{detailID.overview}</p>
 
                 
                 <div>

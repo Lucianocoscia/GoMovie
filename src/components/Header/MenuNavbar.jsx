@@ -25,11 +25,10 @@ const MenuNavbar = () => {
     <div className="navigation">
         <nav>
             <ul >
-                <li onClick={show} className='nav-item'><Link to='/'>Home</Link></li>
-                <li onClick={show } className='nav-item'><Link to='/listado'> Listado </Link></li>
-                {/* <li onClick={show } className='nav-item'><a href='/listado'> Listado </a></li> */}
-                <li onClick={show } className='nav-item'><Link to='/favoritos'>Favoritos</Link></li>
-                <li onClick={show} className='nav-item'><Link to='/contacto'>Contacto</Link></li>
+                <li onClick={show } className='nav-item'><Link to='/home'> Home </Link></li>
+                <li onClick={show } className='nav-item'><Link to='/favoritos'>Favorites</Link></li>
+                <li onClick={show} className='nav-item'><Link to='/'>Income</Link></li>
+                <li onClick={show} className='nav-item'><Link to='/contacto'>Contact</Link></li>
 
             </ul>
         </nav>

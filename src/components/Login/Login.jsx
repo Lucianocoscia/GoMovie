@@ -66,7 +66,7 @@ const Login = () => {
         // console.log(res.data);
         const tokenRecibido = res.data.token;
         sessionStorage.setItem("token", tokenRecibido);
-        navigate("/listado");
+        navigate("/home");
       });
   };
   let token=  sessionStorage.getItem("token");

@@ -4,12 +4,12 @@ import './Item.css'
 
 
 
-function Item( { title, overview, poster_path, id, addOrRemoveFromFavs}) {
+function Item( { title, overview, category, poster_path, id, addOrRemoveFromFavs}) {
+  // console.log(category)
 
   return (
-    
     <div className='container-card'>
-      <Link to={`/detail/${id}`} style= {{color: 'white', textDecoration: 'none'}}>
+      <Link to={`/detail/${category}/${id}`} style= {{color: 'white', textDecoration: 'none'}}>
         <img className='card-img'  src={poster_path} alt={title}/>
         </Link>
         {/* <p className='favourite-btn'  data-movie-id={id} onClick={addOrRemoveFromFavs} >

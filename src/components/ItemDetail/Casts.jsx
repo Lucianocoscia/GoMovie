@@ -4,23 +4,41 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import swAlert from "@sweetalert/with-react";
 import '../../pages/ItemDetailContainer/ItemDetail.css';
+import { apiConfig, category} from '../../config/config'
 
 const Casts = () => {
 
-    let { id } = useParams();
+    let { id, typeOF } = useParams();
     const [casts, setCasts] = useState([]);
-  
-      let endPointVideos = ` https://api.themoviedb.org/3/movie/${id}/credits?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US
-      `
-      useEffect(()=>{
-          axios.get(endPointVideos).then((response) => {
-            const videoData = response.data;
-            setCasts(videoData.cast.slice(0,4));
-            console.log(videoData.cast.slice(0,5));
-          }).catch((error) => {
-            swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-          })
+
+    const getCast = () =>{
+      let endPointVideos = `${apiConfig.baseURL}${category.movie}/${id}/credits?api_key=${apiConfig.apiKey}&language=en-US`;
+      let endPointVideosTV = `${apiConfig.baseURL}${category.tv}/${id}/credits?api_key=${apiConfig.apiKey}&language=en-US`;
+
+      if(typeOF === "movie"){
+        axios.get(endPointVideos).then((response) => {
+          const videoData = response.data;
+          setCasts(videoData.cast.slice(0,4));
+          // console.log(videoData.cast.slice(0,5));
+        }).catch((error) => {
+          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        })
+      } else{
+        axios.get(endPointVideosTV).then((response) => {
+          const videoData = response.data;
+          setCasts(videoData.cast.slice(0,4));
+          // console.log(videoData.cast.slice(0,5));
+        }).catch((error) => {
+          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        })
+      }
+    }
+
+
+
       
+      useEffect(()=>{
+        getCast()
         }, []);
 
   return (

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import swAlert from "@sweetalert/with-react";
 
 import Item from "../../components/Item/Item";
+import { apiConfig, category,  tvType } from '../../config/config';
 
 
 // import Swiper core and required modules
@@ -21,19 +22,21 @@ const TopRatedTv = () => {
 
     const [topRatedTv, setTopRatedTv] = useState([]);
 
-    useEffect(() => {
-      const endPoint = ' https://api.themoviedb.org/3/tv/top_rated?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1'
-      
-     
+    const getTopRatedTv = () =>{
+      const endPoint = ` ${apiConfig.baseURL}${category.tv}/${tvType.top_rated}?api_key=${apiConfig.apiKey}&language=en-US&page=1`
+
       axios.get(endPoint).then((response) => {
         const apiData = response.data;
         setTopRatedTv(apiData.results);
-        console.log(apiData);
+        // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
         swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
   
+    }
+    useEffect(() => {
+      getTopRatedTv()
     },[setTopRatedTv])
 
   return (
@@ -56,10 +59,11 @@ const TopRatedTv = () => {
             return(
                 <SwiperSlide key={index}>      
                   <Item 
+                    category={category.tv}
                     id= {oneMovie.id}
                     title={oneMovie.title}
                     overview={oneMovie.overview.substring(0, 100)}
-                    poster_path={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
+                    poster_path={`${apiConfig.w500Image(oneMovie.poster_path)}`}
                   />
                 </SwiperSlide>
             )

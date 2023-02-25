@@ -5,6 +5,8 @@ import { useEffect, useState } from 'react';
 import swAlert from "@sweetalert/with-react";
 import Item from "../../components/Item/Item";
 
+import { apiConfig, category} from '../../config/config'
+
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
@@ -19,23 +21,37 @@ import 'swiper/css/scrollbar';
 
 const Similar = () => {
 
-    let { id } = useParams();
-    const [similarMovies, setSimilarMovies] = useState([]);
+    let { id, typeOF } = useParams();
+    const [similar, setSimilar] = useState([]);
   
-      let endpointSimilar = ` https://api.themoviedb.org/3/movie/${id}/similar?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1`
 
-      
-      useEffect(()=>{
-          axios.get(endpointSimilar).then((response) => {
-            const similarMovie = response.data;
-            setSimilarMovies(similarMovie.results);
-            console.log(similarMovie);
-          }).catch((error) => {
-            swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-          })
-      
-        }, []);
+    const getSimilar = () =>{
 
+      let endpointSimilar = ` ${apiConfig.baseURL}${category.movie}/${id}/similar?api_key=${apiConfig.apiKey}&language=en-US&page=1`;
+      let endpointSimilarTV = ` ${apiConfig.baseURL}${category.tv}/${id}/similar?api_key=${apiConfig.apiKey}&language=en-US&page=1`;
+
+      if(typeOF === "movie"){
+        axios.get(endpointSimilar).then((response) => {
+          const similarMovie = response.data;
+          setSimilar(similarMovie.results);
+          console.log(similarMovie);
+        }).catch((error) => {
+          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        })
+      }else{
+        axios.get(endpointSimilarTV).then((response) => {
+          const similarMovie = response.data;
+          setSimilar(similarMovie.results);
+          console.log(similarMovie);
+        }).catch((error) => {
+          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        })
+      }
+    }
+    useEffect(()=>{
+      getSimilar()
+    }, [])
+    
   return (
     <>
     <Swiper
@@ -52,14 +68,16 @@ const Similar = () => {
     >
     
     {
-        similarMovies.map((oneMovie, index)=>{
+        similar.map((oneMovie, index)=>{
             return(
                 <SwiperSlide key={index}>      
                   <Item 
+                   
+                    category={typeOF}
                     id= {oneMovie.id}
                     title={oneMovie.title}
                     overview={oneMovie.overview.substring(0, 100)}
-                    poster_path={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
+                    poster_path={apiConfig.w500Image(oneMovie.poster_path)}
                   />
                 </SwiperSlide>
             )

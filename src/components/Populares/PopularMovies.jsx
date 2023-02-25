@@ -5,7 +5,7 @@ import swAlert from "@sweetalert/with-react";
 
 import Item from "../../components/Item/Item";
 
-
+import { apiConfig, category, movieType } from '../../config/config';
 // import Swiper core and required modules
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
@@ -21,19 +21,23 @@ import 'swiper/css/scrollbar';
 const PopularMovies = ({addOrRemoveFromFavs}) => {
 
     const [popularMovies, setPopularMovies] = useState([]);
-
-    useEffect(() => {
-      const endPoint = 'https://api.themoviedb.org/3/movie/popular?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=2'
-      // https://api.themoviedb.org/3/movie/popular?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1
+  
+    const getPopularMovies = () =>{
+      const endPoint = `${apiConfig.baseURL}${category.movie}/${movieType.popular}?api_key=${apiConfig.apiKey}&language=en-US&page=2`
       
       axios.get(endPoint).then((response) => {
         const apiData = response.data;
         setPopularMovies(apiData.results);
-        console.log(apiData);
+        // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
         swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
+    }
+
+
+    useEffect(() => {
+      getPopularMovies()
   
     },[setPopularMovies])
 
@@ -60,10 +64,11 @@ const PopularMovies = ({addOrRemoveFromFavs}) => {
                         return(
                             <SwiperSlide key={index}>      
                               <Item 
+                                category={category.movie}
                                 id= {oneMovie.id}
                                 title={oneMovie.title}
                                 overview={oneMovie.overview.substring(0, 100)}
-                                poster_path={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
+                                poster_path={`${apiConfig.w500Image(oneMovie.poster_path)}`}
                               />
                             </SwiperSlide>
                         )

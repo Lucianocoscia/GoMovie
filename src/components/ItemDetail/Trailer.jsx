@@ -5,35 +5,50 @@ import { useEffect, useState } from 'react';
 import swAlert from "@sweetalert/with-react";
 import '../../pages/ItemDetailContainer/ItemDetail.css'
 
+import { apiConfig, category } from '../../config/config'
 
 const Trailer = () => {
-  let { id } = useParams();
-  const [movieVideo, setMovieVideo] = useState([]);
+  let { id, typeOF } = useParams();
+  const [Video, setVideo] = useState([]);
 
-    let endPointVideos = ` https://api.themoviedb.org/3/movie/${id}/videos?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US`
-   
-    useEffect(()=>{
-        axios.get(endPointVideos).then((response) => {
-          const videoData = response.data;
-          setMovieVideo(videoData.results.slice(0, 1));
-          console.log(videoData.results);
-        }).catch((error) => {
-          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-        })
-    
-      }, []);
+  const getTrailer = () =>{
 
+    let endPointVideos = ` ${apiConfig.baseURL}${category.movie}/${id}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
+    let endPointVideosTV = ` ${apiConfig.baseURL}${category.tv}/${id}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
 
+    if(typeOF === "movie"){
 
+      axios.get(endPointVideos).then((response) => {
+        const videoData = response.data;
+        if(videoData){
+          const trailer = videoData.results.find((video) => video.name === "Official Trailer");
+          setVideo( trailer ? trailer : videoData.results.slice(0, 1))
+        }
+      }).catch((error) => {
+        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+      })
+    }else {
+      axios.get(endPointVideosTV).then((response) => {
+        const videoData = response.data;
+        if(videoData){
+          const trailer = videoData.results.find((video) => video.name === "Official Trailer");
+          setVideo( trailer ? trailer : videoData.slice(0, 1))
+        }
+        console.log(videoData);
+      }).catch((error) => {
+        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+      })
+    }
+  }
+  useEffect(()=>{
+    getTrailer()
+  }, [setVideo]);
 
   return (
     <div className='trailer-container'>
         <h5>International Trailer</h5>
-        {
-          movieVideo.map((video, i) => (
-            <iframe key={i} className='iframe-trailer' src={`https://www.youtube.com/embed/${video.key}`} ></iframe>
-          ))
-        } 
+        <iframe key={Video.i} className='iframe-trailer' src={`https://www.youtube.com/embed/${Video.key}`} ></iframe>
+
     </div>
   )
 }

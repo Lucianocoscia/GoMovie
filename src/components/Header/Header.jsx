@@ -60,7 +60,7 @@ const Header = () => {
         let total = array.length;
         let resultado = "";
         for (let i = 0; i < total; resultado += array[i][0], i++);
-        console.log(resultado);
+        // console.log(resultado);
         return resultado;
       }    
   }

@@ -1,50 +1,24 @@
-.home {
-  width: 100%;
-  height: 100vh;
-  background-image: url(../../../public/imgs/backgroundfooter.jpg);
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-.home-banner {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.swiper-movies {
+  /* height: 400px; altura de las cards en swiper */
+  /* height: 100%; */
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 8%;
+  margin-top: 5%;
 }
 
-.home-logins-title {
-  font-size: 3rem;
-  font-weight: 700;
-  line-height: 1;
+/* .swiper {
+  width: 100%;
+  height: 100%;
+} */
+.swiper-slide {
+  background-color: transparent !important;
+  height: 100% !important;
 }
-.home-logins-parrafo {
-  font-weight: 700;
-  font-size: 1.5rem;
-}
-.contenedor-botones {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin: 1.5rem;
-}
-.btn1-2 {
-  margin-top: 3rem;
-  margin-left: 3rem;
-  background-color: #0f0f0fd6;
+.swiper-button-next:after,
+.swiper-button-prev:after {
   color: #fff;
-  border: 4px solid transparent;
-  /* box-shadow: 0px 0px 7px 7px #6d010fc8; */
-  transition: box-shadow 0.3s ease;
-  font-size: 1.5rem;
-  font-weight: 600;
-  padding: 0.5rem 1.8rem;
-  border-radius: 30px;
-  transition: box-shadow 0.3s ease;
 }
-.btn1-2:hover {
-  box-shadow: 0px 0px 7px 7px #6d010fc8;
+.swiper-pagination-bullet-active {
+  background: #fff !important;
 }

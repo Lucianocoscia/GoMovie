@@ -7,15 +7,16 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import swAlert from "@sweetalert/with-react";
 
 //Components
-import Login from "./components/Login/Login";
-import Listado from "./pages/ItemListContainer/Listado";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
-import Resultados from "./components/Resultados/Resultados";
-import Home from "./pages/Home/Home";
-import Favoritos from "./components/Favoritos/Favoritos";
+
+import Presentacion from "./pages/Presentacion/Presentacion";
+import Login from "./components/Login/Login";
 import Registro from "./components/Registro/Registro";
+
+import Home from "./pages/Home/Home";
+import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
+import Favoritos from "./components/Favoritos/Favoritos";
 import Buscador from "./pages/Buscador/Buscador";
 
 //Styles
@@ -27,7 +28,7 @@ function App() {
 
   useEffect(() => {
     const favsInLocal = localStorage.getItem("favs"); //Levanta lo q tengo en storage
-    console.log(favsInLocal);
+    // console.log(favsInLocal);
 
     if (favsInLocal != null) {
       const favsArray = JSON.parse(favsInLocal);
@@ -93,21 +94,19 @@ function App() {
     }
   };
 
-  //logica para renderizar footer
-
   return (
     <>
       <Header favorites={favorites} />
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Presentacion />} />
         <Route path="/registro" element={<Registro />} />
         <Route path="/login" element={<Login />} />
         <Route
-          path="/listado"
-          element={<Listado addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+          path="/home"
+          element={<Home addOrRemoveFromFavs={addOrRemoveFromFavs} />}
         />
-        <Route path="/detail/:id" element={<ItemDetailContainer />} />
+        <Route path="/detail/:typeOF/:id" element={<ItemDetailContainer />} />
         <Route
           path="/favoritos"
           element={

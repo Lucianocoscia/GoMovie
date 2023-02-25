@@ -1,30 +1,46 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from "react";
+import { Navigate } from "react-router-dom";
 import './Home.css'
+import PopularMovies from "../../components/Populares/PopularMovies";
+import HeroSlide from "../../components/HeroSlide/HeroSlide";
+import TopRated from "../../components/TopRated/TopRated";
+import TopRatedTv from "../../components/TopRated/TopRatedTv";
+import PopularTv from "../../components/Populares/PopularTv";
 
-
-// import Login from '../Login/Login'
-
-const Home = () => {
-
+const Home = ({addOrRemoveFromFavs}) => {
+  let token=  sessionStorage.getItem("token");
+ 
   return (
+
     <>
-          <div className='home'>
-            <div className='home-banner'>
-              <h1 className='m-2 home-logins-title'>Películas y series ilimitadas y mucho más</h1>
-              <p className='m-2 home-logins-parrafo'>Disfruta donde quieras y cuando quieras.</p>
-              <div className='contenedor-botones'>
-                  <Link to={'/registro'}> <button className="btn1-2">Registrarse</button></Link>
-                  <Link to={'/login'}><button className='btn1 btn-outline'>Iniciar Sesion</button></Link>
-              </div>
-            </div>
-      
-          </div>
-
+      {!token  && <Navigate to='/'/>}
     
+      <HeroSlide/>
+      
+      <div className="mt-5 swiper-movies">
+        <h5 className="mt-3">Trending Movies</h5>
+        <PopularMovies/>
+
+      </div>
+      <div className="swiper-movies">
+        <h5>Top Rated Movies</h5>
+        <TopRated/>
+      </div>
+
+      <div className=" swiper-movies swiper-movies-1">
+        <h5>Trending TV</h5>
+        <PopularTv/>
+      </div>
+
+      <div className="swiper-movies">
+        <h5>Top Rated TV</h5>
+        <TopRatedTv/>
+      </div>
+
+      
     </>
-
   );
-}
+};
 
-export default Home
+export default Home; 
+

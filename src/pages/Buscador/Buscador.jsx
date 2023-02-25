@@ -6,6 +6,8 @@ import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
 import ViewMore from '../../components/ViewMore/ViewMore';
+import Peliculas from '../Peliculas/Peliculas';
+import { apiConfig, category } from '../../config/config';
 
 const Buscador = () => {
 
@@ -27,51 +29,28 @@ const Buscador = () => {
         }
     }
 
-
-    //traigo toda la lista de peliculas
-    const [moviesList, setMoviesList] = useState([]);
-
-    useEffect(() => {
-    const endPoint = 'https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate'
-    
-    axios.get(endPoint).then((response) => {
-        const apiData = response.data;
-        setMoviesList(apiData.results);
-    }).catch((error) => {
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-    })
-    },[setMoviesList])
-
     //traigo soolo lo relacionado a lo q buscaron
     const [ moviesResults, setMoviesResults] = useState([]);
 
+    const search = () =>{
+        const endPointMovie = `${apiConfig.baseURL}search/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
+
+        axios.get(endPointMovie).then((response) => {
+            const moviesDataSearch = response.data.results;
+            setMoviesResults(moviesDataSearch);
+        }).catch((error) => {
+            swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        })
+    }
+
     useEffect(()=>{
-    const endPointMovie = `https://api.themoviedb.org/3/search/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
-
-    axios.get(endPointMovie).then((response) => {
-        const moviesDataSearch = response.data.results;
-        setMoviesResults(moviesDataSearch);
-    }).catch((error) => {
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-    })
-
+        search()
+        window.scrollTo(0, 0);
     }, [keywordValue]);
 
     let token=  sessionStorage.getItem("token");
 
 
-    // const loadMore = () =>{
-    //     let params = (new URL('https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate')).searchParams;
-    //     let page = params.get("page");
-    //     console.log(page);
-
-    //     if(page ){
-
-    //     } else{
-    //         let endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
-            
-    //     }
-    // }
   return (
         <>
             {!token  && <Navigate to='/'/>}
@@ -86,23 +65,7 @@ const Buscador = () => {
                     {keywordValue === ""  ?
                         (
                             <>
-                                <div className="grid-list-results">
-                                    {
-                                        moviesList.map((oneMovie, index)=>{
-                                            return(
-                                                <div key={index} className="">
-                                                <Item 
-                                                    
-                                                    id= {oneMovie.id}
-                                                    title={oneMovie.title}
-                                                    overview={oneMovie.overview.substring(0, 100)}
-                                                    poster_path={`https://image.tmdb.org/t/p/w500/${oneMovie.poster_path}`}
-                                                />
-                                                </div>
-                                            )
-                                        })
-                                    }
-                                </div> 
+                                <Peliculas/>
                             </>
                         )
                     :
@@ -120,7 +83,7 @@ const Buscador = () => {
                                         id= {movieSearch.id}
                                         title={movieSearch.title}
                                         overview={movieSearch.overview.substring(0, 100)}
-                                        poster_path={`https://image.tmdb.org/t/p/w500/${movieSearch.poster_path}`}
+                                        poster_path={`${apiConfig.w500Image(movieSearch.poster_path)}`}
                                         />
                                     </div>
                                 )
@@ -135,3 +98,17 @@ const Buscador = () => {
 }
 
 export default Buscador
+
+
+    // const loadMore = () =>{
+    //     let params = (new URL('https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate')).searchParams;
+    //     let page = params.get("page");
+    //     console.log(page);
+
+    //     if(page ){
+
+    //     } else{
+    //         let endPoint = `https://api.themoviedb.org/3/discover/movie?api_key=de087c1ac41855cc9ba52d6c878ac34b&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`
+            
+    //     }
+    // }
