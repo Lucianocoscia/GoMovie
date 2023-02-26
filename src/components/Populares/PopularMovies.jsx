@@ -64,6 +64,7 @@ const PopularMovies = ({addOrRemoveFromFavs}) => {
                         return(
                             <SwiperSlide key={index}>      
                               <Item 
+                                addOrRemoveFromFavs= {addOrRemoveFromFavs}
                                 category={category.movie}
                                 id= {oneMovie.id}
                                 title={oneMovie.title}

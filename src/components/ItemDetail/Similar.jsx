@@ -72,7 +72,6 @@ const Similar = () => {
             return(
                 <SwiperSlide key={index}>      
                   <Item 
-                   
                     category={typeOF}
                     id= {oneMovie.id}
                     title={oneMovie.title}

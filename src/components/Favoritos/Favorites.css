@@ -1,0 +1,12 @@
+.grid-list-results-favorites {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 1fr;
+  gap: 0.75rem;
+  row-gap: 5%;
+  height: 100%;
+  margin-left: 2%;
+  margin-right: 2%;
+  margin-bottom: 5%;
+  margin-top: 10%;
+}

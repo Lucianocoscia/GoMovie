@@ -19,7 +19,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
 
-const TopRated = () => {
+const TopRated = ({addOrRemoveFromFavs}) => {
     const [topRatedMovie, setTopRatedMovies] = useState([]);
 
 
@@ -61,7 +61,7 @@ const TopRated = () => {
                             <SwiperSlide key={index}>      
                               <Item 
                                 category={category.movie}
-
+                                addOrRemoveFromFavs= {addOrRemoveFromFavs}
                                 id= {oneMovie.id}
                                 title={oneMovie.title}
                                 overview={oneMovie.overview.substring(0, 100)}

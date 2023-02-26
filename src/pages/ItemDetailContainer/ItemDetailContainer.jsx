@@ -45,14 +45,13 @@ const ItemDetailContainer = () => {
   useEffect(()=>{
     getDetail()
     window.scrollTo(0,0)
-
     }
   , [setDetailId])
 
   return (
     <>
      {!token  && <Navigate to='/'/>} 
-      <ItemDetail detailID = {detailID} />
+      <ItemDetail  detailID = {detailID} />
     </>
     
   )

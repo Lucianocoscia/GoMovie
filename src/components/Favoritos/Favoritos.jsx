@@ -1,7 +1,7 @@
 // import React from 'react'
 import Item from '../Item/Item';
 import { Navigate } from "react-router-dom";
-
+import './Favorites.css'
 
 const Favoritos = ({favorites, addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
@@ -10,7 +10,7 @@ const Favoritos = ({favorites, addOrRemoveFromFavs}) => {
     <>  
       {!token  && <Navigate to='/'/>}
 
-        <div className='grid-list'>
+        <div className='grid-list-results-favorites'>
         { !favorites.length && <div className=' text-danger'>No tenes nada en favoritos</div> }    
         {   
             favorites.map((oneFavorite, index)=>{

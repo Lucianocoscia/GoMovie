@@ -19,22 +19,22 @@ const Home = ({addOrRemoveFromFavs}) => {
       
       <div className="mt-5 swiper-movies">
         <h5 className="mt-3">Trending Movies</h5>
-        <PopularMovies/>
+        <PopularMovies addOrRemoveFromFavs={addOrRemoveFromFavs}/>
 
       </div>
       <div className="swiper-movies">
         <h5>Top Rated Movies</h5>
-        <TopRated/>
+        <TopRated addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
 
       <div className=" swiper-movies swiper-movies-1">
         <h5>Trending TV</h5>
-        <PopularTv/>
+        <PopularTv addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
 
       <div className="swiper-movies">
         <h5>Top Rated TV</h5>
-        <TopRatedTv/>
+        <TopRatedTv addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
 
       
