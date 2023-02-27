@@ -4,7 +4,8 @@ import Item from '../../components/Item/Item';
 import axios from "axios";
 import swAlert from "@sweetalert/with-react";
 import { apiConfig, category,  } from '../../config/config'
-const Peliculas = () => {
+
+const Peliculas = ({typeOF, addOrRemoveFromFavs}) => {
 
     const [moviesList, setMoviesList] = useState([]);
 
@@ -24,7 +25,7 @@ const Peliculas = () => {
       getMovieList()
     },[setMoviesList])
   
-    console.log(moviesList);
+    // console.log(moviesList);
 
   return (
     <>
@@ -35,7 +36,8 @@ const Peliculas = () => {
                         return(
                             <div key={index} className="">
                             <Item 
-                                
+                                category={typeOF}
+                                addOrRemoveFromFavs={addOrRemoveFromFavs}
                                 id= {oneMovie.id}
                                 title={oneMovie.title}
                                 overview={oneMovie.overview.substring(0, 100)}

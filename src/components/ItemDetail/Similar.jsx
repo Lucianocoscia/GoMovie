@@ -19,7 +19,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
   
 
-const Similar = () => {
+const Similar = ({detailID}) => {
 
     let { id, typeOF } = useParams();
     const [similar, setSimilar] = useState([]);
@@ -72,6 +72,7 @@ const Similar = () => {
             return(
                 <SwiperSlide key={index}>      
                   <Item 
+                    detailID={detailID}
                     category={typeOF}
                     id= {oneMovie.id}
                     title={oneMovie.title}

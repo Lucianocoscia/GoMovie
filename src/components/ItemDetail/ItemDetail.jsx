@@ -62,7 +62,7 @@ const ItemDetail = ({detailID}) => {
           <section className='container mb-5' >
             <div>
               <h5>Similar</h5>
-              <Similar />
+              <Similar detailID={detailID} />
             </div>
           </section>
       </>

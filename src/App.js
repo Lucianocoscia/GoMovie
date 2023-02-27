@@ -116,7 +116,10 @@ function App() {
             />
           }
         />
-        <Route path="/buscador" element={<Buscador />} />
+        <Route
+          path="/buscador"
+          element={<Buscador addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+        />
       </Routes>
       <Footer />
     </>

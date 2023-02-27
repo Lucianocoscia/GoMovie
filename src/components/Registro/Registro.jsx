@@ -58,7 +58,7 @@ const Registro = () => {
   
   return (
     <>
-      {token && <Navigate to='/listado' />}
+      {token && <Navigate to='/home' />}
 
         <div className='background-signup'>
             <div className='form-container'>

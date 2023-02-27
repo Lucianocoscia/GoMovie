@@ -9,10 +9,10 @@ import ViewMore from '../../components/ViewMore/ViewMore';
 import Peliculas from '../Peliculas/Peliculas';
 import { apiConfig, category } from '../../config/config';
 
-const Buscador = () => {
+const Buscador = ({addOrRemoveFromFavs}) => {
 
     const [keywordValue, setKeyword] = useState('');
-
+    
     const submitHandler = e =>{
         e.preventDefault();
         let keyword = e.currentTarget.value.toLowerCase();
@@ -24,27 +24,29 @@ const Buscador = () => {
             }else{
                 e.currentTarget.value = "";
             }
-            console.log(keyword);
             setKeyword(keyword) 
         }
     }
-
+    // console.log(keyword);
+  
     //traigo soolo lo relacionado a lo q buscaron
-    const [ moviesResults, setMoviesResults] = useState([]);
+    const [ searchResults, setResults] = useState([]);
 
-    const search = () =>{
-        const endPointMovie = `${apiConfig.baseURL}search/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
+    const search = (keywordValue) =>{
 
-        axios.get(endPointMovie).then((response) => {
-            const moviesDataSearch = response.data.results;
-            setMoviesResults(moviesDataSearch);
+        const endPointSearch =  `${apiConfig.baseURL}search/multi?api_key=${apiConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
+  
+        axios.get(endPointSearch).then((response) => {
+            const DataSearch = response.data.results;
+            setResults(DataSearch);
         }).catch((error) => {
             swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
+        console.log(searchResults)
     }
 
     useEffect(()=>{
-        search()
+        search(keywordValue)
         window.scrollTo(0, 0);
     }, [keywordValue]);
 
@@ -65,25 +67,26 @@ const Buscador = () => {
                     {keywordValue === ""  ?
                         (
                             <>
-                                <Peliculas/>
+                                <Peliculas typeOF={category.movie} addOrRemoveFromFavs={addOrRemoveFromFavs} />
                             </>
                         )
                     :
                 
                     <>
-                        {moviesResults.length === 0 && <h1>No hay resultados</h1> }
+                        {searchResults.length === 0 && <h1>No hay resultados</h1> }
                         <div className='p-3'>Buscaste: <em>{keywordValue}</em></div>
 
                         <div className='grid-list-results'>
-                            {moviesResults.map((movieSearch, index)=>{
+                            {searchResults.map((movieSearch, index)=>{
                                 return(
                                     <div key={index} className="">
                         
                                         <Item 
-                                        id= {movieSearch.id}
-                                        title={movieSearch.title}
-                                        overview={movieSearch.overview.substring(0, 100)}
-                                        poster_path={`${apiConfig.w500Image(movieSearch.poster_path)}`}
+                                            addOrRemoveFromFavs={addOrRemoveFromFavs}
+                                            category={movieSearch.media_type}
+                                            id= {movieSearch.id}
+                                            title={movieSearch.title}
+                                            poster_path={`${apiConfig.w500Image(movieSearch.poster_path)}`}
                                         />
                                     </div>
                                 )

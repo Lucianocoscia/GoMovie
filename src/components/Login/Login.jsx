@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import '../Registro/Registro.css'
 
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -74,7 +75,8 @@ const Login = () => {
   return (
 
     <>
-      {token && <Navigate to='/listado' />}
+
+      {token && <Navigate to='/home' />}
       <div className='background-signup'>
 
         <div className='form-container'>
