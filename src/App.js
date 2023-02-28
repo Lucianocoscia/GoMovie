@@ -18,6 +18,7 @@ import Home from "./pages/Home/Home";
 import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
 import Favoritos from "./components/Favoritos/Favoritos";
 import Buscador from "./pages/Buscador/Buscador";
+import Movies from "./pages/Peliculas/Movies";
 
 //Styles
 import "./index.css";
@@ -107,6 +108,10 @@ function App() {
           element={<Home addOrRemoveFromFavs={addOrRemoveFromFavs} />}
         />
         <Route path="/detail/:typeOF/:id" element={<ItemDetailContainer />} />
+        <Route
+          path="/movies"
+          element={<Movies addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+        />
         <Route
           path="/favoritos"
           element={

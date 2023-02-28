@@ -32,8 +32,8 @@ const MenuNavbar = () => {
 
             </ul>
         </nav>
-
     </div>
+    
     </>
 
   )

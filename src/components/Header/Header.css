@@ -4,11 +4,7 @@ header {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  /* background-color: #00000099; */
-  /* background-color: #000000f8; */
-  /* background-color: transparent; */
   color: white;
-  /* box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.28); */
   position: fixed;
   top: 0;
   left: 0;
@@ -63,4 +59,13 @@ header.active {
 }
 .css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback {
   height: 60% !important;
+}
+.nav-discover {
+  position: fixed;
+  z-index: -1;
+  left: 7%;
+}
+.item-discover {
+  /* padding-left: 2%; */
+  margin-right: 16px;
 }

@@ -15,12 +15,16 @@ const Peliculas = ({typeOF, addOrRemoveFromFavs}) => {
       axios.get(endPoint).then((response) => {
         const apiData = response.data;
         setMoviesList(apiData.results);
+        console.log(apiData.page);
+        console.log(apiData);
       }).catch((error) => {
         // console.log(error);
         swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
     };
 
+     
+    
     useEffect(() => {
       getMovieList()
     },[setMoviesList])

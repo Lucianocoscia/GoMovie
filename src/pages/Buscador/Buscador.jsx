@@ -31,19 +31,41 @@ const Buscador = ({addOrRemoveFromFavs}) => {
   
     //traigo soolo lo relacionado a lo q buscaron
     const [ searchResults, setResults] = useState([]);
+    const [pages, setPage] = useState([]);
 
     const search = (keywordValue) =>{
 
         const endPointSearch =  `${apiConfig.baseURL}search/multi?api_key=${apiConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
   
         axios.get(endPointSearch).then((response) => {
-            const DataSearch = response.data.results;
-            setResults(DataSearch);
+            const DataSearch = response.data;
+            setResults(DataSearch.results);
+
+            console.log(DataSearch.page);
+            setPage(DataSearch.page);
+
         }).catch((error) => {
             swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
         console.log(searchResults)
     }
+    
+    // const nextPage = () => {
+    //     console.log("estoy en next", pages);
+         
+    //     // setPage(pagesSuma)
+    //     console.log("luego de la suma", pages);
+
+    //       const endPoint = `${apiConfig.baseURL}discover/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pages}&with_watch_monetization_types=flatrate`
+    //       axios.get(endPoint).then((response) => {
+    //         const DataSearch = response.data.results;
+    //         setResults(DataSearch, ...DataSearch);
+    //         console.log(DataSearch);
+    //       }).catch((error) => {
+    //         // console.log(error);
+    //         swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+    //       })
+    //     };
 
     useEffect(()=>{
         search(keywordValue)
@@ -95,7 +117,7 @@ const Buscador = ({addOrRemoveFromFavs}) => {
                     </>
                     }
             </div>
-            <ViewMore />{/* loadMore={loadMore} */}
+            <ViewMore  />
         </>
   )
 }

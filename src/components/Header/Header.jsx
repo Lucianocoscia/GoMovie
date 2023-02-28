@@ -6,13 +6,13 @@ import Swal from 'sweetalert2'
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { Link, useParams } from 'react-router-dom';
+import { Link } from 'react-router-dom'; /* useParams */
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 const Header = () => {
-  const {keyword} = useParams;
+  // const {keyword} = useParams;
 //Funcion q hace q cambie el navbar
   const isScrolling = () => {
     const headerEl = document.querySelector('header')
@@ -76,6 +76,12 @@ const Header = () => {
   return (
     <header>  
       <MenuNavbar/>
+      <div className='nav-discover'>
+        <Link to={'/movies'} className='item-discover' >Movies</Link>
+        <Link to={'/tvshow'} className='item-discover'>Tv Show</Link>
+      </div>
+
+      
       <IconButton className="search-icon"  aria-label="search" color="inherit">
           <Link to={`/buscador`}><SearchIcon className='icon-size' /></Link>
       </IconButton>
