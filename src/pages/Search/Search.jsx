@@ -1,6 +1,6 @@
 import React from 'react';
 import './Search.css';
-// import swAlert from "@sweetalert/with-react";
+
 import {Navigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';

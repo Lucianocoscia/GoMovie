@@ -2,7 +2,6 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from 'react';
-// import swAlert from "@sweetalert/with-react";
 import '../../pages/ItemDetailContainer/ItemDetail.css'
 
 import { apiConfig, category } from '../../config/config'

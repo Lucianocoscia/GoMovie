@@ -14,7 +14,7 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 
 import axios from "axios";
-// import swAlert from "@sweetalert/with-react";
+
 import { apiConfig} from "../../config/config";
 
 

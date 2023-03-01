@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
-// import swAlert from "@sweetalert/with-react";
 
 import Item from "../../components/Item/Item";
 

@@ -1,9 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navigate, useNavigate } from "react-router-dom";
-// import swAlert from "@sweetalert/with-react";
-// import Swal from 'sweetalert2'
-
 
 
 import './Register.css'

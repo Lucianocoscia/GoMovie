@@ -3,7 +3,6 @@ import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-// import swAlert from "@sweetalert/with-react";
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
 import './ItemDetail.css'
 

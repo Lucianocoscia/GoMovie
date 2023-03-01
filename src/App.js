@@ -4,7 +4,6 @@ import { useState, useEffect, useRef } from "react";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-// import swAlert from "@sweetalert/with-react";
 
 //Components
 import Header from "./components/Header/Header";

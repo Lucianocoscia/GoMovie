@@ -2,7 +2,6 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
-// import swAlert from "@sweetalert/with-react";
 import { apiConfig, category,  } from '../../config/config'
 
 const TvShowList = ({contador, typeOF, addOrRemoveFromFavs}) => {
