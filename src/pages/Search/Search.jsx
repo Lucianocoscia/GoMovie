@@ -1,6 +1,6 @@
 import React from 'react';
 import './Search.css';
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 import {Navigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
@@ -18,9 +18,9 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
         let keyword = e.currentTarget.value.toLowerCase();
         if(e.key === 'Enter'){
             if(keyword.trim().length === 0 ){
-                swAlert("Oops", "Los campos no pueden estar vacios", "error");
+                // swAlert("Oops", "Los campos no pueden estar vacios", "error");
             }else if( keyword.length < 4){
-                swAlert("Oops", "Debes ingresar mas de 4 caracteres", "error");
+                // swAlert("Oops", "Debes ingresar mas de 4 caracteres", "error");
             }else{
                 e.currentTarget.value = "";
             }
@@ -40,7 +40,7 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
             const DataSearch = response.data;
             setResults(DataSearch.results);
         }).catch((error) => {
-            swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+            // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
         console.log(searchResults)
     }

@@ -35,6 +35,7 @@ header.active {
 .search-icon {
   margin: auto;
   cursor: pointer;
+  opacity: 0.6;
   transition: all 0.5s !important;
 }
 .icon-size {
@@ -43,6 +44,7 @@ header.active {
 }
 .search-icon:hover {
   transform: scale(1.1);
+  opacity: 1;
 }
 /* Color background del menu del avatar */
 .css-6hp17o-MuiList-root-MuiMenu-list {
@@ -51,21 +53,24 @@ header.active {
   border: none;
   /* opacity: 0.8; */
 }
-/* .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
-  color: aliceblue;
-} */
+
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root:hover {
   background-color: #0000003c !important;
 }
 .css-10mi8st-MuiSvgIcon-root-MuiAvatar-fallback {
   height: 60% !important;
 }
+/* Links movies y tvshow */
 .nav-discover {
   position: fixed;
   z-index: -1;
   left: 7%;
 }
 .item-discover {
-  /* padding-left: 2%; */
   margin-right: 16px;
+  opacity: 0.6;
+  transition: all 0.5s;
+}
+.item-discover:hover {
+  opacity: 1;
 }

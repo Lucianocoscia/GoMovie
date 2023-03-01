@@ -22,3 +22,26 @@
 .swiper-pagination-bullet-active {
   background: #fff !important;
 }
+.container-title-and-link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1%;
+}
+
+.link-view-more {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  background-color: #0f0f0f;
+  border: 2px solid #fff;
+  padding: 0.3% 1.5%;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 650;
+  transition: all 0.4s ease-in-out;
+}
+.link-view-more:hover {
+  color: #000;
+  background-color: #fff;
+}

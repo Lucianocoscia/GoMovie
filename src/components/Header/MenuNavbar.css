@@ -11,15 +11,20 @@ nav {
   padding-left: 0;
   background-color: #000000f8;
   background-color: #000000dc;
+  background-color: #000000e6;
 
   height: 100%;
   width: 350px;
   padding-top: 100px;
-  display: flex;
+  /* display: flex;
   align-items: flex-start;
-  justify-content: left;
+  justify-content: left; */
 }
-
+ul {
+  padding: 0;
+  /* padding-left: 10%;
+  padding-right: 10%; */
+}
 .navigation {
   position: absolute;
   left: -100%;
@@ -31,15 +36,19 @@ nav {
   color: #fff;
   margin: 0;
   padding: 0;
-  text-align: left;
+  text-align: center;
   text-transform: uppercase;
   list-style-type: none;
   font-size: 1.5em;
   height: 100%;
   padding: 20px 30px;
   width: 100%;
+  transition: all 0.4s ease-in-out;
+  cursor: pointer;
 }
-
+.navigation nav ul li:hover {
+  box-shadow: rgba(254, 0, 0, 0.2) 0px 7px 20px 0px;
+}
 .hamburger,
 .bar {
   position: absolute;
@@ -52,8 +61,12 @@ nav {
   height: 30px;
   border: 0;
   background: 0 0;
+  opacity: 0.7;
+  transition: all 0.4s;
 }
-
+.hamburger:hover {
+  opacity: 1;
+}
 .bar {
   top: 3px;
   background: #fff;

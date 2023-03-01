@@ -1,8 +1,6 @@
 import React from 'react'
 import './MenuNavbar.css'
 import { Link } from 'react-router-dom'
-// import Buscador from '../Buscador/Buscador'
-
 
 const MenuNavbar = () => {
 
@@ -11,9 +9,6 @@ const MenuNavbar = () => {
         document.querySelector('.navigation').classList.toggle('active')
     }
 
-    // function refreshPage() {
-    //     window.location.reload(true);
-    //   }
   return (
     <>
     <button className="hamburger" onClick={show}>
@@ -26,9 +21,9 @@ const MenuNavbar = () => {
         <nav>
             <ul >
                 <li onClick={show } className='nav-item'><Link to='/home'> Home </Link></li>
-                <li onClick={show } className='nav-item'><Link to='/favoritos'>Favorites</Link></li>
+                <li onClick={show } className='nav-item'><Link to='/favorites'>Favorites</Link></li>
                 <li onClick={show} className='nav-item'><Link to='/'>Income</Link></li>
-                <li onClick={show} className='nav-item'><Link to='/contacto'>Contact</Link></li>
+                <li onClick={show} className='nav-item'><Link to='/contact'>Contact</Link></li>
 
             </ul>
         </nav>

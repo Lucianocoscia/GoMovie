@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import '../Register/Register.css'
@@ -18,20 +18,20 @@ const Login = () => {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (email === "" || password === "") {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Los campos no pueden estar vacios',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Los campos no pueden estar vacios',
+      // })
       return;
     }
 
     if (email !== "" && !regexEmail.test(email)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Debes escribir una direccion de correo electronico valida!',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Debes escribir una direccion de correo electronico valida!',
+      // })
 
       return;
     }
@@ -39,11 +39,11 @@ const Login = () => {
     let passwordRegister = sessionStorage.getItem('password');
 
     if (email !== emailRegiser  || password !== passwordRegister) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Credenciales invalidas',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Credenciales invalidas',
+      // })
 
       return;
     }
@@ -59,11 +59,11 @@ const Login = () => {
       .post("http://challenge-react.alkemy.org", { email, password })
       // .post("http://localhost:3000", { email, password })
       .then((res) => {
-        Swal.fire({
-          icon: 'success',
-          title: 'Good job!',
-          text: 'Perfecto, has ingresado correctamente!',
-        })
+        // Swal.fire({
+        //   icon: 'success',
+        //   title: 'Good job!',
+        //   text: 'Perfecto, has ingresado correctamente!',
+        // })
         // console.log(res.data);
         const tokenRecibido = res.data.token;
         sessionStorage.setItem("token", tokenRecibido);

@@ -1,7 +1,7 @@
 import React, {  useState, useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import { Link } from "react-router-dom";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";
@@ -14,24 +14,24 @@ import { Autoplay, Pagination, Navigation } from "swiper";
 
 
 import axios from "axios";
-import swAlert from "@sweetalert/with-react";
-import { apiConfig, category, movieType } from "../../config/config";
+// import swAlert from "@sweetalert/with-react";
+import { apiConfig} from "../../config/config";
 
 
-export default function HeroSlide({}) {
+export default function HeroSlide({typeOF, typeHero }) {
 
     const [upcomingMovie, setUpcomingMovies] = useState([]);
 
     useEffect(() => {
-      const endpointUpcoming = `${apiConfig.baseURL}${category.movie}/${movieType.upcoming}?api_key=${apiConfig.apiKey}&language=en-US`    
+      const endpointUpcoming = `${apiConfig.baseURL}${typeOF}/${typeHero}?api_key=${apiConfig.apiKey}&language=en-US`    
       
       axios.get(endpointUpcoming).then((response) => {
         const apiData = response.data;
         setUpcomingMovies(apiData.results);
         // console.log(apiData.results);
       }).catch((error) => {
-        // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        console.log(error, 'el heroslide no pude renderizarse');
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
   
     },[setUpcomingMovies]);
@@ -72,7 +72,7 @@ export default function HeroSlide({}) {
                                         <h5 className="hero-overview">{oneMovie.overview.substring(0, 200)}...</h5>
 
                                         <div className="hero-btns-container">
-                                                <button className="btn1">Watch Now</button>
+                                                <Link  to={`/detail/${typeOF}/${oneMovie.id}`}  className="btn1">Watch Now</Link>
                                                 <button className="btn1 btn-outline">Watch Trailer</button>
                                         </div>
                                     </div>

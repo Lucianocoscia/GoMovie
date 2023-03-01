@@ -1,8 +1,10 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import MenuNavbar from './MenuNavbar'
 import './Header.css'
-import Swal from 'sweetalert2'
+
+import Alert from '@mui/material/Alert';
+
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,7 +14,7 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
 const Header = () => {
-  // const {keyword} = useParams;
+
 //Funcion q hace q cambie el navbar
   const isScrolling = () => {
     const headerEl = document.querySelector('header')
@@ -21,34 +23,11 @@ const Header = () => {
   }
   window.addEventListener('scroll', isScrolling);
 
-  const InfoUser = () =>{
-    const email = sessionStorage.getItem('email');
-    const name = sessionStorage.getItem('name');
-
-    Swal.fire({
-      title: 'USER',
-      text: `Name: ${name}
-      Email: ${email}`,
-      icon: 'warning',
-
-    })
-  };
-
-  const Logout = ()=>{
-    sessionStorage.clear();
-    Swal.fire(
-      'Log out success!',
-      'you have logged out successfully',
-      'success'
-    )
-    setTimeout(() => {
-      window.location.reload();
-    }, 2000);
-  }
-
   function IsLogged(){
+
       const name = sessionStorage.getItem('name');
       let palabras = name;
+
 
       if(palabras === null){
         return;
@@ -59,10 +38,37 @@ const Header = () => {
         let total = array.length;
         let resultado = "";
         for (let i = 0; i < total; resultado += array[i][0], i++);
-        // console.log(resultado);
-        return resultado;
-      }    
+        console.log(resultado);
+        return resultado ;
+      }   
+      
   }
+  const InfoUser = () =>{
+    const email = sessionStorage.getItem('email');
+    const name = sessionStorage.getItem('name');
+
+    // Swal.fire({
+    //   title: 'USER',
+    //   text: `Name: ${name}
+    //   Email: ${email}`,
+    //   icon: 'warning',
+
+    // })
+
+  };
+
+  const Logout = ()=>{
+    sessionStorage.clear();
+    // Swal.fire(
+    //   'Log out success!',
+    //   'you have logged out successfully',
+    //   'success'
+    // )
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
+  }
+
 
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);

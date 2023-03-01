@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from 'react';
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 import Item from "../../components/Item/Item";
 
 import { apiConfig, category} from '../../config/config'
@@ -36,7 +36,7 @@ const Similar = ({detailID}) => {
           setSimilar(similarMovie.results);
           console.log(similarMovie);
         }).catch((error) => {
-          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
       }else{
         axios.get(endpointSimilarTV).then((response) => {
@@ -44,7 +44,7 @@ const Similar = ({detailID}) => {
           setSimilar(similarMovie.results);
           console.log(similarMovie);
         }).catch((error) => {
-          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
       }
     }

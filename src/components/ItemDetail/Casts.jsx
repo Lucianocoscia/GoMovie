@@ -2,7 +2,7 @@ import React from 'react'
 import { useParams } from 'react-router-dom';
 import axios from "axios";
 import { useEffect, useState } from 'react';
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 import '../../pages/ItemDetailContainer/ItemDetail.css';
 import { apiConfig, category} from '../../config/config'
 
@@ -21,7 +21,7 @@ const Casts = () => {
           setCasts(videoData.cast.slice(0,4));
           // console.log(videoData.cast.slice(0,5));
         }).catch((error) => {
-          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
       } else{
         axios.get(endPointVideosTV).then((response) => {
@@ -29,7 +29,7 @@ const Casts = () => {
           setCasts(videoData.cast.slice(0,4));
           // console.log(videoData.cast.slice(0,5));
         }).catch((error) => {
-          swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
       }
     }

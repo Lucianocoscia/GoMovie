@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 import ItemDetail from '../../components/ItemDetail/ItemDetail'
 import './ItemDetail.css'
 
@@ -28,7 +28,7 @@ const ItemDetailContainer = () => {
         console.log(movieDataID);
       }).catch((error) => {
         // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
   
       })
     } else{
@@ -38,7 +38,7 @@ const ItemDetailContainer = () => {
         // console.log(movieDataID);
       }).catch((error) => {
         // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
   }}
 

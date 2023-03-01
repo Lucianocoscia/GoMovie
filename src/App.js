@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 
 //Components
 import Header from "./components/Header/Header";
@@ -19,7 +19,7 @@ import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer
 import Favorites from "./components/Favorites/Favorites";
 import Search from "./pages/Search/Search";
 import Movies from "./pages/Movies/Movies";
-
+import TvShow from "./pages/TvShow/TvShow";
 //Styles
 import "./index.css";
 
@@ -79,12 +79,12 @@ function App() {
       // console.log(tempMoviesInFavs);
 
       console.log("Se agrego la pelicula");
-      swAlert("Good job!", "Se agrego la pelicula a favoritos!", "success"); //PONER SWAL
+      // swAlert("Good job!", "Se agrego la pelicula a favoritos!", "success"); //PONER SWAL
     } else {
       console.log(
         "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos "
       );
-      swAlert("Oops", "La pelicula  fue eliminada de favoritos", "error");
+      // swAlert("Oops", "La pelicula  fue eliminada de favoritos", "error");
       // PONER SWAL
 
       let removeFromFavs = tempMoviesInFavs.filter((oneMovie) => {
@@ -102,6 +102,7 @@ function App() {
     setContador(contador + 1);
     document.documentElement.scrollTop =
       document.documentElement.scrollHeight / 3;
+
     console.log("soy el contador", contador);
   };
   const handleClickLess = () => {
@@ -121,13 +122,31 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route
           path="/home"
-          element={<Home addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+          element={
+            <Home
+              contador={contador}
+              handleClick={handleClick}
+              handleClickLess={handleClickLess}
+              addOrRemoveFromFavs={addOrRemoveFromFavs}
+            />
+          }
         />
         <Route path="/detail/:typeOF/:id" element={<ItemDetailContainer />} />
         <Route
           path="/movies"
           element={
             <Movies
+              contador={contador}
+              handleClick={handleClick}
+              handleClickLess={handleClickLess}
+              addOrRemoveFromFavs={addOrRemoveFromFavs}
+            />
+          }
+        />
+        <Route
+          path="/tvshow"
+          element={
+            <TvShow
               contador={contador}
               handleClick={handleClick}
               handleClickLess={handleClickLess}

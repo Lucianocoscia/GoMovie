@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 
 import Item from "../../components/Item/Item";
 
@@ -30,7 +30,7 @@ const PopularTv = ({addOrRemoveFromFavs}) => {
         // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
     }
 

@@ -1,7 +1,6 @@
 import React from 'react'
 import axios from "axios";
 import { useEffect, useState } from "react";
-import swAlert from "@sweetalert/with-react";
 
 import Item from "../../components/Item/Item";
 
@@ -18,12 +17,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
   
 
-const PopularMovies = ({addOrRemoveFromFavs}) => {
+const PopularMovies = ({contador, addOrRemoveFromFavs}) => {
 
     const [popularMovies, setPopularMovies] = useState([]);
   
     const getPopularMovies = () =>{
-      const endPoint = `${apiConfig.baseURL}${category.movie}/${movieType.popular}?api_key=${apiConfig.apiKey}&language=en-US&page=2`
+      const endPoint = `${apiConfig.baseURL}${category.movie}/${movieType.popular}?api_key=${apiConfig.apiKey}&language=en-US&page=${contador}`
       
       axios.get(endPoint).then((response) => {
         const apiData = response.data;
@@ -31,7 +30,7 @@ const PopularMovies = ({addOrRemoveFromFavs}) => {
         // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
     }
 
@@ -39,7 +38,7 @@ const PopularMovies = ({addOrRemoveFromFavs}) => {
     useEffect(() => {
       getPopularMovies()
   
-    },[setPopularMovies])
+    },[/* contador */setPopularMovies])
 
 
 

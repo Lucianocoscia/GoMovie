@@ -2,12 +2,11 @@ import React from 'react'
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
-import swAlert from "@sweetalert/with-react";
+// import swAlert from "@sweetalert/with-react";
 import { apiConfig, category,  } from '../../config/config'
 
 
-const MoviesList = ({contador, typeOF, addOrRemoveFromFavs}) => {
-    console.log(contador);
+const MoviesList = ({ contador, typeOF, addOrRemoveFromFavs}) => {
     const [moviesList, setMoviesList] = useState([]);
 
     const getMovieList = () =>{
@@ -17,31 +16,23 @@ const MoviesList = ({contador, typeOF, addOrRemoveFromFavs}) => {
         const apiData = response.data;
         if(contador === 1){
           setMoviesList(apiData.results);
-
         } else{
-          setMoviesList([ ...apiData.results]);
+          setMoviesList(apiData.results);
         }
-        console.log(apiData.page);
-        console.log(apiData);
       }).catch((error) => {
         // console.log(error);
-        swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
       })
     };
 
-     
-    
     useEffect(() => {
       getMovieList()
     },[contador])
-  
-    // console.log(moviesList);
-
 
   return (
     <>
-  
-            <div  className="grid-list-results">
+
+            <div   className="grid-list-results">
                 {
                     moviesList.map((oneMovie, index)=>{
                         return(

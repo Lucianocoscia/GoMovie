@@ -1,24 +1,25 @@
-import React from 'react'
+import React ,  { useRef }from 'react'
 import HeroSlide from '../../components/HeroSlide/HeroSlide'
 import MoviesList from './MoviesList'
 import './Movies.css'
 import ViewMore from '../../components/ViewMore/ViewMore'
-import { category } from '../../config/config'
+import { category, movieType } from '../../config/config'
 import { Navigate } from "react-router-dom";
 
 
 const Movies = ({ contador, handleClick, handleClickLess , addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
 
+
   return (
     <>
       {!token  && <Navigate to='/'/>}
 
-      <HeroSlide/>
+      <HeroSlide typeOF={category.movie}  typeHero={movieType.popular}/>
       <div className='movies-container'>
-        <MoviesList contador={contador}   typeOF={category.movie}  addOrRemoveFromFavs={addOrRemoveFromFavs}/>
+        <MoviesList  contador={contador}   typeOF={category.movie}  addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
-      <ViewMore contador={contador} handleClickLess={handleClickLess}  handleClick={handleClick}  />
+      <ViewMore   contador={contador} handleClickLess={handleClickLess}  handleClick={handleClick}  />
 
     </>
   )

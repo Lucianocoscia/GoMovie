@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navigate, useNavigate } from "react-router-dom";
 // import swAlert from "@sweetalert/with-react";
-import Swal from 'sweetalert2'
+// import Swal from 'sweetalert2'
 
 
 
@@ -32,19 +32,19 @@ const Register = () => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //verifica si es valido el email
 
     if (email === "" || password === "") {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Los campos no pueden estar vacios',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Los campos no pueden estar vacios',
+      // })
       return;
     }
     if (email !== "" && !regexEmail.test(email)) {
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Debes escribir una direccion de correo electronico valida!',
-      })
+      // Swal.fire({
+      //   icon: 'error',
+      //   title: 'Oops...',
+      //   text: 'Debes escribir una direccion de correo electronico valida!',
+      // })
     }
     navigate('/login')
       // if (email !== sessionStorage.email.value || password !== sessionStorage.password.value) {
