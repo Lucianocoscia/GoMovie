@@ -1,15 +1,15 @@
 import React from 'react';
-import './Buscador.css';
+import './Search.css';
 import swAlert from "@sweetalert/with-react";
 import {Navigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
 import ViewMore from '../../components/ViewMore/ViewMore';
-import Peliculas from '../Peliculas/Peliculas';
+import MoviesList from '../Movies/MoviesList';
 import { apiConfig, category } from '../../config/config';
 
-const Buscador = ({addOrRemoveFromFavs}) => {
+const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) => {
 
     const [keywordValue, setKeyword] = useState('');
     
@@ -31,46 +31,26 @@ const Buscador = ({addOrRemoveFromFavs}) => {
   
     //traigo soolo lo relacionado a lo q buscaron
     const [ searchResults, setResults] = useState([]);
-    const [pages, setPage] = useState([]);
 
     const search = (keywordValue) =>{
 
-        const endPointSearch =  `${apiConfig.baseURL}search/multi?api_key=${apiConfig.apiKey}&language=en-US&page=1&include_adult=false&query=${keywordValue}`;
+        const endPointSearch =  `${apiConfig.baseURL}search/multi?api_key=${apiConfig.apiKey}&language=en-US&page=${contador}&include_adult=false&query=${keywordValue}`;
   
         axios.get(endPointSearch).then((response) => {
             const DataSearch = response.data;
             setResults(DataSearch.results);
-
-            console.log(DataSearch.page);
-            setPage(DataSearch.page);
-
         }).catch((error) => {
             swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         })
         console.log(searchResults)
     }
     
-    // const nextPage = () => {
-    //     console.log("estoy en next", pages);
-         
-    //     // setPage(pagesSuma)
-    //     console.log("luego de la suma", pages);
 
-    //       const endPoint = `${apiConfig.baseURL}discover/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pages}&with_watch_monetization_types=flatrate`
-    //       axios.get(endPoint).then((response) => {
-    //         const DataSearch = response.data.results;
-    //         setResults(DataSearch, ...DataSearch);
-    //         console.log(DataSearch);
-    //       }).catch((error) => {
-    //         // console.log(error);
-    //         swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-    //       })
-    //     };
 
     useEffect(()=>{
         search(keywordValue)
         window.scrollTo(0, 0);
-    }, [keywordValue]);
+    }, [keywordValue, contador]);
 
     let token=  sessionStorage.getItem("token");
 
@@ -89,7 +69,7 @@ const Buscador = ({addOrRemoveFromFavs}) => {
                     {keywordValue === ""  ?
                         (
                             <>
-                                <Peliculas typeOF={category.movie} addOrRemoveFromFavs={addOrRemoveFromFavs} />
+                                <MoviesList  contador={contador} typeOF={category.movie} addOrRemoveFromFavs={addOrRemoveFromFavs} />
                             </>
                         )
                     :
@@ -117,12 +97,12 @@ const Buscador = ({addOrRemoveFromFavs}) => {
                     </>
                     }
             </div>
-            <ViewMore  />
+            <ViewMore  contador={contador} handleClick={handleClick} handleClickLess={handleClickLess}   />
         </>
   )
 }
 
-export default Buscador
+export default Search
 
 
     // const loadMore = () =>{

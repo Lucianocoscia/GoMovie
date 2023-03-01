@@ -3,7 +3,7 @@ import Item from '../Item/Item';
 import { Navigate } from "react-router-dom";
 import './Favorites.css'
 
-const Favoritos = ({favorites, addOrRemoveFromFavs}) => {
+const Favorites = ({favorites, addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
 
   return (
@@ -25,15 +25,12 @@ const Favoritos = ({favorites, addOrRemoveFromFavs}) => {
                   />
                 </div>
               )
-  
             })
           }
-        
-
         </div>
     </>
     
   )
 }
 
-export default Favoritos
+export default Favorites

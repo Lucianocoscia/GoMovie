@@ -17,3 +17,18 @@
   color: #000;
   background-color: #fff;
 }
+.button-view-less {
+  color: #fff;
+  background-color: #0f0f0f;
+  border: 2px solid #fff;
+  font-weight: 700;
+  padding: 0.5rem 1.5rem;
+  border-radius: 30px;
+  margin-bottom: 5%;
+  transition: all 0.4s ease-in-out;
+  margin-right: 1%;
+}
+.button-view-less:hover {
+  color: #000;
+  background-color: #fff;
+}

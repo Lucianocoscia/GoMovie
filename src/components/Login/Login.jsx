@@ -3,7 +3,7 @@ import axios from "axios";
 import Swal from 'sweetalert2'
 import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
-import '../Registro/Registro.css'
+import '../Register/Register.css'
 
 
 const Login = () => {
@@ -90,7 +90,7 @@ const Login = () => {
                 <div className="user-box">
                   <input required="" name="password" type="password" placeholder="Password"/>
                 </div>
-                <a hnref='' onClick={submitHandler} >
+                <a  onClick={submitHandler} >
                   <span></span>
                   <span></span>
                   <span></span>
@@ -98,7 +98,7 @@ const Login = () => {
                   Submit
                 </a>
             </form>
-            <p>Don't have an account? <Link to={'/registro'} className="a2">Sign up!</Link></p>
+            <p>Don't have an account? <Link to={'/register'} className="a2">Sign up!</Link></p>
           </div>
         </div>
       </div>

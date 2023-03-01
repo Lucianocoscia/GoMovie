@@ -6,10 +6,10 @@ import Swal from 'sweetalert2'
 
 
 
-import './Registro.css'
+import './Register.css'
 
 
-const Registro = () => {
+const Register = () => {
 
   const navigate = useNavigate(); // esto es para redirigir y cuidar la ruta
 
@@ -97,4 +97,4 @@ const Registro = () => {
   )
 }
 
-export default Registro
+export default Register

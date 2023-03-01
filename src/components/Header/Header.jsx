@@ -46,7 +46,6 @@ const Header = () => {
     }, 2000);
   }
 
-
   function IsLogged(){
       const name = sessionStorage.getItem('name');
       let palabras = name;
@@ -64,6 +63,7 @@ const Header = () => {
         return resultado;
       }    
   }
+
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -83,7 +83,7 @@ const Header = () => {
 
       
       <IconButton className="search-icon"  aria-label="search" color="inherit">
-          <Link to={`/buscador`}><SearchIcon className='icon-size' /></Link>
+          <Link to={`/search`}><SearchIcon className='icon-size' /></Link>
       </IconButton>
 
       <Avatar className="m-3 user-icon"  onClick={handleClick} aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true"

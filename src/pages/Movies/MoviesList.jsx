@@ -5,16 +5,22 @@ import axios from "axios";
 import swAlert from "@sweetalert/with-react";
 import { apiConfig, category,  } from '../../config/config'
 
-const Peliculas = ({typeOF, addOrRemoveFromFavs}) => {
 
+const MoviesList = ({contador, typeOF, addOrRemoveFromFavs}) => {
+    console.log(contador);
     const [moviesList, setMoviesList] = useState([]);
 
     const getMovieList = () =>{
-      const endPoint = `${apiConfig.baseURL}discover/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_watch_monetization_types=flatrate`
+      const endPoint = `${apiConfig.baseURL}discover/${category.movie}?api_key=${apiConfig.apiKey}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${contador}&with_watch_monetization_types=flatrate`
       
       axios.get(endPoint).then((response) => {
         const apiData = response.data;
-        setMoviesList(apiData.results);
+        if(contador === 1){
+          setMoviesList(apiData.results);
+
+        } else{
+          setMoviesList([ ...apiData.results]);
+        }
         console.log(apiData.page);
         console.log(apiData);
       }).catch((error) => {
@@ -27,14 +33,15 @@ const Peliculas = ({typeOF, addOrRemoveFromFavs}) => {
     
     useEffect(() => {
       getMovieList()
-    },[setMoviesList])
+    },[contador])
   
     // console.log(moviesList);
 
+
   return (
     <>
-         
-            <div className="grid-list-results">
+  
+            <div  className="grid-list-results">
                 {
                     moviesList.map((oneMovie, index)=>{
                         return(
@@ -52,9 +59,9 @@ const Peliculas = ({typeOF, addOrRemoveFromFavs}) => {
                     })
                 }
             </div> 
-                          
+            
     </>
   )
 }
 
-export default Peliculas
+export default MoviesList

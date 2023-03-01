@@ -1,6 +1,6 @@
 //Libraries
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -10,15 +10,15 @@ import swAlert from "@sweetalert/with-react";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 
-import Presentacion from "./pages/Presentacion/Presentacion";
+import Presentacion from "./pages/Income/Income";
 import Login from "./components/Login/Login";
-import Registro from "./components/Registro/Registro";
+import Register from "./components/Register/Register";
 
 import Home from "./pages/Home/Home";
 import ItemDetailContainer from "./pages/ItemDetailContainer/ItemDetailContainer";
-import Favoritos from "./components/Favoritos/Favoritos";
-import Buscador from "./pages/Buscador/Buscador";
-import Movies from "./pages/Peliculas/Movies";
+import Favorites from "./components/Favorites/Favorites";
+import Search from "./pages/Search/Search";
+import Movies from "./pages/Movies/Movies";
 
 //Styles
 import "./index.css";
@@ -95,13 +95,29 @@ function App() {
     }
   };
 
+  // Pagination
+  const [contador, setContador] = useState(1);
+
+  const handleClick = () => {
+    setContador(contador + 1);
+    document.documentElement.scrollTop =
+      document.documentElement.scrollHeight / 3;
+    console.log("soy el contador", contador);
+  };
+  const handleClickLess = () => {
+    document.documentElement.scrollTop =
+      document.documentElement.scrollHeight / 3;
+    setContador(contador - 1);
+    console.log("soy el contador", contador);
+  };
+
   return (
     <>
       <Header favorites={favorites} />
 
       <Routes>
         <Route path="/" element={<Presentacion />} />
-        <Route path="/registro" element={<Registro />} />
+        <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route
           path="/home"
@@ -110,20 +126,34 @@ function App() {
         <Route path="/detail/:typeOF/:id" element={<ItemDetailContainer />} />
         <Route
           path="/movies"
-          element={<Movies addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+          element={
+            <Movies
+              contador={contador}
+              handleClick={handleClick}
+              handleClickLess={handleClickLess}
+              addOrRemoveFromFavs={addOrRemoveFromFavs}
+            />
+          }
         />
         <Route
-          path="/favoritos"
+          path="/favorites"
           element={
-            <Favoritos
+            <Favorites
               addOrRemoveFromFavs={addOrRemoveFromFavs}
               favorites={favorites}
             />
           }
         />
         <Route
-          path="/buscador"
-          element={<Buscador addOrRemoveFromFavs={addOrRemoveFromFavs} />}
+          path="/search"
+          element={
+            <Search
+              contador={contador}
+              handleClick={handleClick}
+              handleClickLess={handleClickLess}
+              addOrRemoveFromFavs={addOrRemoveFromFavs}
+            />
+          }
         />
       </Routes>
       <Footer />

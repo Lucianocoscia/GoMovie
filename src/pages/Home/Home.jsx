@@ -1,11 +1,11 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
 import './Home.css'
-import PopularMovies from "../../components/Populares/PopularMovies";
+import PopularMovies from "../../components/Popular/PopularMovies";
 import HeroSlide from "../../components/HeroSlide/HeroSlide";
 import TopRated from "../../components/TopRated/TopRated";
 import TopRatedTv from "../../components/TopRated/TopRatedTv";
-import PopularTv from "../../components/Populares/PopularTv";
+import PopularTv from "../../components/Popular/PopularTv";
 
 const Home = ({addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
