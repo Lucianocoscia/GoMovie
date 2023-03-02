@@ -75,7 +75,10 @@ const Header = () => {
         <Link to={'/movies'} className='item-discover' >Movies</Link>
         <Link to={'/tvshow'} className='item-discover'>Tv Show</Link>
       </div>
-      <img className='logo' src={Logo}/>
+      <Link to={'/home'}>
+        <img className='logo' src={Logo}/>
+
+      </Link>
       
       <div className='flex-container-search-and-user'>
         <IconButton className="search-icon"  aria-label="search" color="inherit">
