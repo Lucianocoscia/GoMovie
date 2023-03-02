@@ -20,9 +20,17 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
         let keyword = e.currentTarget.value.toLowerCase();
         if(e.key === 'Enter'){
             if(keyword.trim().length === 0 ){
-                toast.error('Debes ingresar mas de 4 caracteres')
+                toast.error('Debes ingresar mas de 4 caracteres' , {style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  }})
             }else if( keyword.length < 4){
-                toast.error('Debes ingresar mas de 4 caracteres')
+                toast.error('Debes ingresar mas de 4 caracteres', {style: {
+                    borderRadius: '10px',
+                    background: '#333',
+                    color: '#fff',
+                  }})
             }else{
                 e.currentTarget.value = "";
             }
@@ -42,7 +50,11 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
             const DataSearch = response.data;
             setResults(DataSearch.results);
         }).catch((error) => {
-            toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
+            toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde', {style: {
+                borderRadius: '10px',
+                background: '#333',
+                color: '#fff',
+              }})
         })
         console.log(searchResults)
     }

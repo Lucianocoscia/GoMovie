@@ -31,7 +31,11 @@ const PopularMovies = ({contador, addOrRemoveFromFavs}) => {
         // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
-      toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde");
+      toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde" , {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }});
 
       })
     }

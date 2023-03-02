@@ -82,7 +82,14 @@ function App() {
         "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos "
       );
       toast.error(
-        "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos"
+        "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos",
+        {
+          style: {
+            borderRadius: "10px",
+            background: "#333",
+            color: "#fff",
+          },
+        }
       );
       // PONER SWAL
 

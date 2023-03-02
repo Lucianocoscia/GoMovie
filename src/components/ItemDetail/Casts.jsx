@@ -31,7 +31,11 @@ const Casts = () => {
           // console.log(videoData.cast.slice(0,5));
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
-          toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde")
+          toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde" , {style: {
+            borderRadius: '10px',
+            background: '#333',
+            color: '#fff',
+          }})
         })
       }
     }

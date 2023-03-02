@@ -30,11 +30,19 @@ const Register = () => {
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //verifica si es valido el email
 
     if (email === "" || password === "") {
-      toast.error('Los campos no pueden estar vacios')
+      toast.error('Los campos no pueden estar vacios', {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }})
       return;
     }
     if (email !== "" && !regexEmail.test(email)) {
-      toast.error('Debes escribir una direccion de correo electronico valida!')
+      toast.error('Debes escribir una direccion de correo electronico valida!', {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }})
 
     }
     navigate('/login')

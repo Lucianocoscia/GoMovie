@@ -18,11 +18,23 @@ const Login = () => {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (email === "" || password === "") {
-      toast.error("Los campos no pueden estar vacios");
+      toast.error("Los campos no pueden estar vacios" , {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }});
     }
 
     if (email !== "" && !regexEmail.test(email)) {
-      toast.error("Debes escribir una direccion de correo electronico valida!");
+      toast.error("Debes escribir una direccion de correo electronico valida!" , {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }}, {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }});
 
       return;
     }
@@ -30,7 +42,11 @@ const Login = () => {
     let passwordRegister = sessionStorage.getItem('password');
 
     if (email !== emailRegiser  || password !== passwordRegister) {
-      toast.error("Credenciales invalidas");
+      toast.error("Credenciales invalidas" , {style: {
+        borderRadius: '10px',
+        background: '#333',
+        color: '#fff',
+      }});
 
       return;
     }
@@ -51,7 +67,11 @@ const Login = () => {
         //   title: 'Good job!',
         //   text: 'Perfecto, has ingresado correctamente!',
         // })
-        toast.success('Perfecto, has ingresado correctamente!')
+        toast.success('Perfecto, has ingresado correctamente!', {style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        }})
         // console.log(res.data);
         const tokenRecibido = res.data.token;
         sessionStorage.setItem("token", tokenRecibido);
@@ -63,7 +83,7 @@ const Login = () => {
   return (
 
     <>
-      <Toaster position="top-center"/>
+      <Toaster  position="top-center"/>
       {token && <Navigate to='/home' />}
       <div className='background-signup'>
 
