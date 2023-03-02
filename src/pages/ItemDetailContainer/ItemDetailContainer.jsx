@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from "axios";
@@ -59,7 +59,7 @@ const ItemDetailContainer = () => {
   return (
     <>
     <Toaster position="top-center"/>
-     {!token  && <Navigate to='/'/>} 
+     {/* {!token  && <Navigate to='/'/>}  */}
       <ItemDetail  detailID = {detailID} />
     </>
     

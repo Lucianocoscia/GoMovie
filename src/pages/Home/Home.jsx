@@ -1,5 +1,5 @@
 import React from "react";
-import { Navigate, Link } from "react-router-dom";
+import { /* Navigate, */ Link } from "react-router-dom";
 import './Home.css'
 import PopularMovies from "../../components/Popular/PopularMovies";
 import HeroSlide from "../../components/HeroSlide/HeroSlide";
@@ -16,7 +16,7 @@ const Home = ({/* contador, handleClick, handleClickLess, */addOrRemoveFromFavs}
   return (
 
     <>
-      {!token  && <Navigate to='/'/>}
+      {/* {!token  && <Navigate to='/'/>} */}
     
       <HeroSlide typeHero={movieType.upcoming} typeOF={category.movie} />
       

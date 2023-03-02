@@ -1,7 +1,7 @@
 import React from "react";
-import axios from "axios";
+// import axios from "axios";
 import { Link } from "react-router-dom";
-import { Navigate, useNavigate } from "react-router-dom";
+import { /* Navigate, */ useNavigate } from "react-router-dom";
 import '../Register/Register.css'
 
 import toast, {Toaster} from 'react-hot-toast'
@@ -58,33 +58,28 @@ const Login = () => {
 
     console.log("Ok estamos listos para enviar la informacion ");
 
-    axios
-      .post("http://challenge-react.alkemy.org", { email, password })
-      // .post("http://localhost:3000", { email, password })
-      .then((res) => {
-        // Swal.fire({
-        //   icon: 'success',
-        //   title: 'Good job!',
-        //   text: 'Perfecto, has ingresado correctamente!',
-        // })
-        toast.success('Perfecto, has ingresado correctamente!', {style: {
-          borderRadius: '10px',
-          background: '#333',
-          color: '#fff',
-        }})
-        // console.log(res.data);
-        const tokenRecibido = res.data.token;
-        sessionStorage.setItem("token", tokenRecibido);
-        navigate("/home");
-      });
+    // axios
+    //   .post("http://challenge-react.alkemy.org", { email, password })
+    //   // .post("http://localhost:3000", { email, password })
+    //   .then((res) => {
+    //     toast.success('Perfecto, has ingresado correctamente!', {style: {
+    //       borderRadius: '10px',
+    //       background: '#333',
+    //       color: '#fff',
+    //     }})
+    //     // console.log(res.data);
+    //     const tokenRecibido = res.data.token;
+    //     sessionStorage.setItem("token", tokenRecibido);
+    //     navigate("/home");
+    //   });
   };
-  let token=  sessionStorage.getItem("token");
+  // let token=  sessionStorage.getItem("token");
 
   return (
 
     <>
       <Toaster  position="top-center"/>
-      {token && <Navigate to='/home' />}
+      {/* {token && <Navigate to='/home' />} */}
       <div className='background-signup'>
 
         <div className='form-container'>

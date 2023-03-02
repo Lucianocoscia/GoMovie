@@ -8,7 +8,7 @@ const Favorites = ({favorites, addOrRemoveFromFavs}) => {
 
   return (
     <>  
-      {!token  && <Navigate to='/'/>}
+      {/* {!token  && <Navigate to='/'/>} */}
 
         <div className='grid-list-results-favorites'>
         { !favorites.length && <div className=' text-danger'>No tenes nada en favoritos</div> }    

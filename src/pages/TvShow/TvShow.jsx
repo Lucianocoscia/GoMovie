@@ -1,5 +1,5 @@
 import React from 'react'
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 import HeroSlide from '../../components/HeroSlide/HeroSlide'
 import TvShowList from './TvShowList';
 import ViewMore from '../../components/ViewMore/ViewMore'
@@ -11,7 +11,7 @@ const TvShow = ({contador, handleClick, handleClickLess , addOrRemoveFromFavs}) 
 
   return (
         <>
-            {!token  && <Navigate to='/'/>}
+            {/* {!token  && <Navigate to='/'/>}s */}
             <HeroSlide typeHero={tvType.popular} typeOF={category.tv} />
             <div className='movies-container'>
                 <TvShowList contador={contador}   typeOF={category.tv}  addOrRemoveFromFavs={addOrRemoveFromFavs}/>

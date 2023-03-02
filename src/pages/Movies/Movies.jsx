@@ -13,7 +13,7 @@ const Movies = ({ contador, handleClick, handleClickLess , addOrRemoveFromFavs})
 
   return (
     <>
-      {!token  && <Navigate to='/'/>}
+      {/* {!token  && <Navigate to='/'/>} */}
 
       <HeroSlide typeOF={category.movie}  typeHero={movieType.popular}/>
       <div className='movies-container'>

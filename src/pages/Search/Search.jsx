@@ -1,7 +1,7 @@
 import React from 'react';
 import './Search.css';
 
-import {Navigate } from "react-router-dom";
+// import {Navigate } from "react-router-dom";
 import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
@@ -72,7 +72,7 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
   return (
         <>
         <Toaster position="top-center"/>
-            {!token  && <Navigate to='/'/>}
+            {/* {!token  && <Navigate to='/'/>} */}
 
             <div className='search-container'>
 
