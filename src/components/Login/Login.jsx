@@ -1,7 +1,7 @@
 import React from "react";
 // import axios from "axios";
 import { Link } from "react-router-dom";
-import { /* Navigate, */ useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import '../Register/Register.css'
 
 import toast, {Toaster} from 'react-hot-toast'
@@ -49,7 +49,16 @@ const Login = () => {
       }});
 
       return;
+    }else{
+          toast.success('Perfecto, has ingresado correctamente!', {style: {
+          borderRadius: '10px',
+          background: '#333',
+          color: '#fff',
+        }})
+        navigate("/home");
+
     }
+
     // if (email !== "challenge@alkemy.org" || password !== "react") {
     //   swAlert("Oops", "Credenciales invalidas", "error");
 

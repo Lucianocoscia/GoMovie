@@ -76,7 +76,7 @@ export default function HeroSlide({typeOF, typeHero }) {
 
                                 <div className="hero-grid">
                                     <div className="hero-grid-1">
-                                        <h1 className="hero-title">{oneMovie.title}</h1>
+                                        <h1 className="hero-title">{oneMovie.title || oneMovie.name}</h1>
                                         <h5 className="hero-overview">{oneMovie.overview.substring(0, 200)}...</h5>
 
                                         <div className="hero-btns-container">
