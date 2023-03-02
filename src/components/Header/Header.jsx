@@ -7,7 +7,7 @@ import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import { Link } from 'react-router-dom'; /* useParams */
-
+import Logo from './GoMovie-icon-left-official.png'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 
@@ -75,26 +75,29 @@ const Header = () => {
         <Link to={'/movies'} className='item-discover' >Movies</Link>
         <Link to={'/tvshow'} className='item-discover'>Tv Show</Link>
       </div>
-
+      <img className='logo' src={Logo}/>
       
-      <IconButton className="search-icon"  aria-label="search" color="inherit">
-          <Link to={`/search`}><SearchIcon className='icon-size' /></Link>
-      </IconButton>
+      <div className='flex-container-search-and-user'>
+        <IconButton className="search-icon"  aria-label="search" color="inherit">
+            <Link to={`/search`}><SearchIcon className='icon-size' /></Link>
+        </IconButton>
 
-      <Avatar className="m-3 user-icon"  onClick={handleClick} aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined} sx={{  textTransform:'capitalize' }}>{IsLogged()}</Avatar> 
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-menu',
-        }}
-      >
-        <MenuItem onClick={InfoUser}>My account</MenuItem>
-        <MenuItem onClick={Logout}>Logout</MenuItem>
-      </Menu>
+        <Avatar className="m-3 user-icon"  onClick={handleClick} aria-controls={open ? 'basic-menu' : undefined} aria-haspopup="true"
+          aria-expanded={open ? 'true' : undefined} sx={{  textTransform:'capitalize' }}>{IsLogged()}</Avatar> 
+        <Menu
+          id="basic-menu"
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          MenuListProps={{
+            'aria-labelledby': 'basic-menu',
+          }}
+        >
+          <MenuItem onClick={InfoUser}>My account</MenuItem>
+          <MenuItem onClick={Logout}>Logout</MenuItem>
+        </Menu>
+      </div>
+
     </header>
   )
 }
