@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Navigate, useNavigate } from "react-router-dom";
+import toast, {Toaster} from 'react-hot-toast';
 
 
 import './Register.css'
@@ -16,45 +17,34 @@ const Register = () => {
     const name = e.target.parentElement.name.value;
     const email = e.target.parentElement.email.value;
     const password = e.target.parentElement.password.value;
-    console.log(password);
+    // console.log(password);
 
     sessionStorage.setItem("name", name);
     sessionStorage.setItem("email", email);
-    console.log('aca muestro lo q trae el session',sessionStorage.email);
+    // console.log('aca muestro lo q trae el session',sessionStorage.email);
     sessionStorage.setItem("password", password);
-    console.log('aca muestro lo q trae el session',sessionStorage.password);
+    // console.log('aca muestro lo q trae el session',sessionStorage.password); 
 
 
       const regexEmail =
     /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/; //verifica si es valido el email
 
     if (email === "" || password === "") {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Los campos no pueden estar vacios',
-      // })
+      toast.error('Los campos no pueden estar vacios')
       return;
     }
     if (email !== "" && !regexEmail.test(email)) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Debes escribir una direccion de correo electronico valida!',
-      // })
+      toast.error('Debes escribir una direccion de correo electronico valida!')
+
     }
     navigate('/login')
-      // if (email !== sessionStorage.email.value || password !== sessionStorage.password.value) {
-      //   swAlert("Oops", "Credenciales invalidas", "error");
-  
-      //   return;
-      // }
 
   }
   let token=  sessionStorage.getItem("token");
   
   return (
     <>
+    <Toaster position="top-center"/>
       {token && <Navigate to='/home' />}
 
         <div className='background-signup'>

@@ -10,7 +10,7 @@ import { apiConfig, category} from '../../config/config'
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-
+import toast, {Toaster} from 'react-hot-toast'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -36,6 +36,7 @@ const Similar = ({detailID}) => {
           console.log(similarMovie);
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde");
         })
       }else{
         axios.get(endpointSimilarTV).then((response) => {
@@ -44,6 +45,8 @@ const Similar = ({detailID}) => {
           console.log(similarMovie);
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde");
+
         })
       }
     }
@@ -53,6 +56,7 @@ const Similar = ({detailID}) => {
     
   return (
     <>
+    <Toaster position="top-center"/>
     <Swiper
   
     // install Swiper modules

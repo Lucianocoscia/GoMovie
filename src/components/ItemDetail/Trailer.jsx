@@ -6,6 +6,8 @@ import '../../pages/ItemDetailContainer/ItemDetail.css'
 
 import { apiConfig, category } from '../../config/config'
 
+import toast, {Toaster} from 'react-hot-toast'
+
 const Trailer = () => {
   let { id, typeOF } = useParams();
   const [Video, setVideo] = useState([]);
@@ -25,6 +27,7 @@ const Trailer = () => {
         }
       }).catch((error) => {
         // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
       })
     }else {
       axios.get(endPointVideosTV).then((response) => {
@@ -35,7 +38,7 @@ const Trailer = () => {
         }
         console.log(videoData);
       }).catch((error) => {
-        // swAlert("Oops", "No encontramos un trailer para este film", "error");
+        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
       })
     }
   }
@@ -44,11 +47,15 @@ const Trailer = () => {
   }, [setVideo]);
 
   return (
-    <div className='trailer-container'>
-        <h5>International Trailer</h5>
-        <iframe key={Video.i} className='iframe-trailer' src={`https://www.youtube.com/embed/${Video.key}`} ></iframe>
+    <>
+      <Toaster position="top-center"/>
+      <div className='trailer-container'>
+          <h5>International Trailer</h5>
+          <iframe key={Video.i} className='iframe-trailer' src={`https://www.youtube.com/embed/${Video.key}`} ></iframe>
 
-    </div>
+      </div>
+    </>
+
   )
 }
 

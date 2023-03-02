@@ -3,6 +3,7 @@ import { useState, useEffect} from 'react';
 import Item from '../../components/Item/Item';
 import axios from "axios";
 import { apiConfig, category,  } from '../../config/config'
+import toast, {Toaster} from 'react-hot-toast';
 
 const TvShowList = ({contador, typeOF, addOrRemoveFromFavs}) => {
     const [tvShowList, setTvShowList] = useState([]);
@@ -20,7 +21,7 @@ const TvShowList = ({contador, typeOF, addOrRemoveFromFavs}) => {
         }
       }).catch((error) => {
         // console.log(error);
-        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
       })
     };
 
@@ -31,7 +32,7 @@ const TvShowList = ({contador, typeOF, addOrRemoveFromFavs}) => {
     },[contador])
   return (
     <>
-  
+    <Toaster position="top-center"/>
     <div  className="grid-list-results">
         {
             tvShowList.map((oneMovie, index)=>{

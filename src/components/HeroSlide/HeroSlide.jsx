@@ -17,6 +17,7 @@ import axios from "axios";
 
 import { apiConfig} from "../../config/config";
 
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function HeroSlide({typeOF, typeHero }) {
 
@@ -32,6 +33,8 @@ export default function HeroSlide({typeOF, typeHero }) {
       }).catch((error) => {
         console.log(error, 'el heroslide no pude renderizarse');
         // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+      toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde")
+
       })
   
     },[setUpcomingMovies]);
@@ -39,6 +42,7 @@ export default function HeroSlide({typeOF, typeHero }) {
 
   return (
     <>
+    <Toaster position="top-center"/>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}

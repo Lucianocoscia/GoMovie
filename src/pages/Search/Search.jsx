@@ -9,6 +9,8 @@ import ViewMore from '../../components/ViewMore/ViewMore';
 import MoviesList from '../Movies/MoviesList';
 import { apiConfig, category } from '../../config/config';
 
+import toast, {Toaster} from 'react-hot-toast';
+
 const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) => {
 
     const [keywordValue, setKeyword] = useState('');
@@ -18,9 +20,9 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
         let keyword = e.currentTarget.value.toLowerCase();
         if(e.key === 'Enter'){
             if(keyword.trim().length === 0 ){
-                // swAlert("Oops", "Los campos no pueden estar vacios", "error");
+                toast.error('Debes ingresar mas de 4 caracteres')
             }else if( keyword.length < 4){
-                // swAlert("Oops", "Debes ingresar mas de 4 caracteres", "error");
+                toast.error('Debes ingresar mas de 4 caracteres')
             }else{
                 e.currentTarget.value = "";
             }
@@ -40,7 +42,7 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
             const DataSearch = response.data;
             setResults(DataSearch.results);
         }).catch((error) => {
-            // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+            toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
         })
         console.log(searchResults)
     }
@@ -57,6 +59,7 @@ const Search = ({ contador, handleClick, handleClickLess, addOrRemoveFromFavs}) 
 
   return (
         <>
+        <Toaster position="top-center"/>
             {!token  && <Navigate to='/'/>}
 
             <div className='search-container'>

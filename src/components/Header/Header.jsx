@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import MenuNavbar from './MenuNavbar'
 import './Header.css'
 
-import Alert from '@mui/material/Alert';
-
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -12,6 +10,8 @@ import { Link } from 'react-router-dom'; /* useParams */
 
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+
+import toast, { Toaster } from 'react-hot-toast';
 
 const Header = () => {
 
@@ -46,24 +46,12 @@ const Header = () => {
   const InfoUser = () =>{
     const email = sessionStorage.getItem('email');
     const name = sessionStorage.getItem('name');
-
-    // Swal.fire({
-    //   title: 'USER',
-    //   text: `Name: ${name}
-    //   Email: ${email}`,
-    //   icon: 'warning',
-
-    // })
-
+    // poner un info
   };
 
   const Logout = ()=>{
     sessionStorage.clear();
-    // Swal.fire(
-    //   'Log out success!',
-    //   'you have logged out successfully',
-    //   'success'
-    // )
+    toast.success('You have logged out successfully')
     setTimeout(() => {
       window.location.reload();
     }, 2000);
@@ -80,7 +68,8 @@ const Header = () => {
   };
 
   return (
-    <header>  
+    <header> 
+      <Toaster position="top-center"/> 
       <MenuNavbar/>
       <div className='nav-discover'>
         <Link to={'/movies'} className='item-discover' >Movies</Link>

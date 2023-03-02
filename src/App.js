@@ -21,6 +21,7 @@ import Movies from "./pages/Movies/Movies";
 import TvShow from "./pages/TvShow/TvShow";
 //Styles
 import "./index.css";
+import toast, { Toaster } from "react-hot-toast";
 
 function App() {
   //logica para levantar el estado y compartirlo a favoritos
@@ -55,14 +56,10 @@ function App() {
 
     // capto los datos de cada elemento
     const imgUrl = parent.querySelector("img").getAttribute("src");
-    // const title = parent.querySelector(".card-title").innerText;
-    // const overview = parent.querySelector(".card-text").innerText;
 
     // armo un objeto con esos datos
     const movieData = {
       imgUrl,
-      // title,
-      // overview,
       dataMovieID: btn.dataset.movieId,
     };
     // console.log(movieData);
@@ -78,12 +75,15 @@ function App() {
       // console.log(tempMoviesInFavs);
 
       console.log("Se agrego la pelicula");
+      toast.success("Se agrego la pelicula a favoritos!");
       // swAlert("Good job!", "Se agrego la pelicula a favoritos!", "success"); //PONER SWAL
     } else {
       console.log(
         "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos "
       );
-      // swAlert("Oops", "La pelicula  fue eliminada de favoritos", "error");
+      toast.error(
+        "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos"
+      );
       // PONER SWAL
 
       let removeFromFavs = tempMoviesInFavs.filter((oneMovie) => {
@@ -113,6 +113,7 @@ function App() {
 
   return (
     <>
+      <Toaster position="top-center" />
       <Header favorites={favorites} />
 
       <Routes>

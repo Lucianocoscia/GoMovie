@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Navigate, useNavigate } from "react-router-dom";
 import '../Register/Register.css'
 
+import toast, {Toaster} from 'react-hot-toast'
 
 const Login = () => {
   const navigate = useNavigate();
@@ -17,20 +18,11 @@ const Login = () => {
       /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
 
     if (email === "" || password === "") {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Los campos no pueden estar vacios',
-      // })
-      return;
+      toast.error("Los campos no pueden estar vacios");
     }
 
     if (email !== "" && !regexEmail.test(email)) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Debes escribir una direccion de correo electronico valida!',
-      // })
+      toast.error("Debes escribir una direccion de correo electronico valida!");
 
       return;
     }
@@ -38,11 +30,7 @@ const Login = () => {
     let passwordRegister = sessionStorage.getItem('password');
 
     if (email !== emailRegiser  || password !== passwordRegister) {
-      // Swal.fire({
-      //   icon: 'error',
-      //   title: 'Oops...',
-      //   text: 'Credenciales invalidas',
-      // })
+      toast.error("Credenciales invalidas");
 
       return;
     }
@@ -63,6 +51,7 @@ const Login = () => {
         //   title: 'Good job!',
         //   text: 'Perfecto, has ingresado correctamente!',
         // })
+        toast.success('Perfecto, has ingresado correctamente!')
         // console.log(res.data);
         const tokenRecibido = res.data.token;
         sessionStorage.setItem("token", tokenRecibido);
@@ -74,7 +63,7 @@ const Login = () => {
   return (
 
     <>
-
+      <Toaster position="top-center"/>
       {token && <Navigate to='/home' />}
       <div className='background-signup'>
 

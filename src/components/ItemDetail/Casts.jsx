@@ -4,6 +4,7 @@ import axios from "axios";
 import { useEffect, useState } from 'react';
 import '../../pages/ItemDetailContainer/ItemDetail.css';
 import { apiConfig, category} from '../../config/config'
+import toast, { Toaster } from 'react-hot-toast';
 
 const Casts = () => {
 
@@ -21,6 +22,7 @@ const Casts = () => {
           // console.log(videoData.cast.slice(0,5));
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+
         })
       } else{
         axios.get(endPointVideosTV).then((response) => {
@@ -29,6 +31,7 @@ const Casts = () => {
           // console.log(videoData.cast.slice(0,5));
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+          toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde")
         })
       }
     }
@@ -42,6 +45,7 @@ const Casts = () => {
 
   return (
     <>
+    <Toaster position="top-center"/>
             {
             casts.map((cast, i)=> (
                 

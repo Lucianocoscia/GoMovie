@@ -18,9 +18,6 @@ const Favorites = ({favorites, addOrRemoveFromFavs}) => {
                 <div key={index} className="">
                   <Item 
                     addOrRemoveFromFavs= {addOrRemoveFromFavs}
-                    id= {oneFavorite.dataMovieID}
-                    // title={oneFavorite.title}
-                    // overview={oneFavorite.overview.substring(0, 100)}
                     poster_path={oneFavorite.imgUrl}
                   />
                 </div>

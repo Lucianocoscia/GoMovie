@@ -15,7 +15,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
-  
+
+import toast, {Toaster} from 'react-hot-toast';
 
 const PopularMovies = ({contador, addOrRemoveFromFavs}) => {
 
@@ -30,7 +31,8 @@ const PopularMovies = ({contador, addOrRemoveFromFavs}) => {
         // console.log(apiData);
       }).catch((error) => {
         // console.log(error);
-        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+      toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde");
+
       })
     }
 
@@ -45,6 +47,7 @@ const PopularMovies = ({contador, addOrRemoveFromFavs}) => {
 
   return (
             <>
+            <Toaster position="top-center"/>
                 <Swiper
               
                 // install Swiper modules

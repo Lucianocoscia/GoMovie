@@ -13,13 +13,6 @@ function Item( { title, detailID, category, poster_path, id, addOrRemoveFromFavs
         <img className='card-img'  src={poster_path} alt={title}/>
         </Link>
         <AddOutlinedIcon  data-movie-id={id} onClick={addOrRemoveFromFavs}  className='favourite-btn'  fontSize="medium" ></AddOutlinedIcon>
-        {/* <div className='card-body'>
-          <h1 className="text-center">{title}</h1>
-          <h5>
-            {overview}...
-          </h5>
-          <button ><Link to={`/detail/${id}`} style= {{color: 'white', textDecoration: 'none'}}>View Detail</Link></button>
-        </div> */}
     </div>
     
   );

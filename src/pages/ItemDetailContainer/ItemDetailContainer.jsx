@@ -8,6 +8,8 @@ import './ItemDetail.css'
 
 import { apiConfig, category } from '../../config/config';
 
+import toast, {Toaster} from 'react-hot-toast';
+
 const ItemDetailContainer = () => {
   let token = sessionStorage.getItem('token');
 
@@ -26,8 +28,7 @@ const ItemDetailContainer = () => {
         setDetailId(movieDataID);
         console.log(movieDataID);
       }).catch((error) => {
-        // console.log(error);
-        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
   
       })
     } else{
@@ -37,7 +38,7 @@ const ItemDetailContainer = () => {
         // console.log(movieDataID);
       }).catch((error) => {
         // console.log(error);
-        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
+        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde')
       })
   }}
 
@@ -49,6 +50,7 @@ const ItemDetailContainer = () => {
 
   return (
     <>
+    <Toaster position="top-center"/>
      {!token  && <Navigate to='/'/>} 
       <ItemDetail  detailID = {detailID} />
     </>
