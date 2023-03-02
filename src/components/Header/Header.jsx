@@ -6,7 +6,7 @@ import './Header.css'
 import Avatar from '@mui/material/Avatar';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import { Link } from 'react-router-dom'; /* useParams */
+import { Link , useNavigate } from 'react-router-dom'; /* useParams */
 import Logo from './GoMovie-icon-left-official.png'
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import toast, { Toaster } from 'react-hot-toast';
 
 const Header = () => {
+  const navigate = useNavigate();
 
 //Funcion q hace q cambie el navbar
   const isScrolling = () => {
@@ -53,7 +54,7 @@ const Header = () => {
     sessionStorage.clear();
     toast.success('You have logged out successfully')
     setTimeout(() => {
-      window.location.reload();
+      navigate('/')
     }, 2000);
   }
 
