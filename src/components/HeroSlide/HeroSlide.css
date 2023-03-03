@@ -166,6 +166,7 @@
     height: 400px;
     width: 300px;
     margin-bottom: 5%;
+    visibility: hidden;
   }
   .contenedor-botones {
     flex-direction: column;
