@@ -5,12 +5,14 @@
   background-image: url(../../../public/imgs/backgroundfooter.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .form-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 10%;
 }
 
 .login-box {

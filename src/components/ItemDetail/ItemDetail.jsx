@@ -5,7 +5,7 @@ import Trailer from './Trailer';
 import Casts from './Casts';
 import Similar from './Similar';
 import { apiConfig } from '../../config/config';
-
+import '../../pages/ItemDetailContainer/ItemDetail.css'
 const ItemDetail = ({detailID}) => {
 
   const [loader, setLoader] = useState(true); 
@@ -39,14 +39,16 @@ const ItemDetail = ({detailID}) => {
 
               <div className='flex-info-detail'>
                 <h1 className='detail-title'> {detailID.original_title || detailID.name}</h1>
-                <div >{detailID.genres.map(oneGenre =>
+                <div className='container-button-genre'>
+                  {detailID.genres.map(oneGenre =>
                                 <button className='detail-button-genre' key={oneGenre.id }> {oneGenre.name}</button>)
-                            }</div>
+                            }
+                </div>
                 <p className='detail-overview'>{detailID.overview}</p>
 
                 
                 <div>
-                  <h3 >Casts</h3>
+                  <h3 className='title-cast'>Casts</h3>
                   <div className='grid-casts'>
                     <Casts/>
                   </div>

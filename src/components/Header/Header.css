@@ -35,6 +35,8 @@ header {
 
 header.active {
   background-color: #000000dc;
+  background-color: #000000e6;
+
   box-shadow: 0 3px 1rem rgba(0, 0, 0, 0.1);
   height: 8vh;
   transition: all 0.4s ease-in-out;
@@ -85,4 +87,38 @@ header.active {
   width: 250px;
   height: 250px;
   cursor: pointer;
+}
+
+@media screen and (max-width: 1023px) {
+  /* Tablet */
+  .nav-discover {
+    left: 8%;
+  }
+}
+@media screen and (max-width: 600px) {
+  /* Mobile */
+  .css-zylse7-MuiButtonBase-root-MuiIconButton-root {
+    padding: 4px !important;
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .user-icon {
+    margin: 0 !important;
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .flex-container-search-and-user {
+    right: 1%;
+    z-index: -1;
+  }
+  .nav-discover {
+    visibility: hidden;
+  }
+  .logo {
+    height: 100%;
+    width: 190px;
+  }
+  nav {
+    width: 100%;
+  }
 }

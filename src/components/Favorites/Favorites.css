@@ -10,3 +10,11 @@
   margin-bottom: 5%;
   margin-top: 10%;
 }
+@media screen and (max-width: 600px) {
+  .grid-list-results-favorites {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 30%;
+    margin-bottom: 50%;
+    row-gap: 2%;
+  }
+}

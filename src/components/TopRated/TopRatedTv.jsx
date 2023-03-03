@@ -58,6 +58,19 @@ const TopRatedTv = ({addOrRemoveFromFavs}) => {
     // scrollbar={{ draggable: true }}
     // onSwiper={(swiper) => console.log(swiper)}
     // onSlideChange={() => console.log('slide change')}
+    breakpoints={{
+      // when window width is >= 300px
+      300: {
+        slidesPerView: 2.5,
+      },
+      // when window width is >= 600px
+      600: {
+        slidesPerView: 3.5,
+      },
+      1023: {
+        slidesPerView: 5.5,
+      },
+}}
     >
     
     {

@@ -60,3 +60,12 @@ input:hover {
   height: 100%;
   padding-top: 8%;
 }
+
+@media screen and (max-width: 1023px) {
+  .search-container {
+    margin-top: 20%;
+  }
+  .group {
+    margin-bottom: 5%;
+  }
+}

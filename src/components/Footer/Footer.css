@@ -16,10 +16,10 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
-  gap: 5rem;
+  /* gap: 5rem;
 
   margin-left: 5%;
-  margin-right: 5%;
+  margin-right: 5%; */
 }
 .links-container {
   display: flex;
@@ -30,4 +30,8 @@ footer {
 .links-container a:hover {
   cursor: pointer;
   color: #6d0110;
+}
+@media screen and (max-width: 1023px) {
+}
+@media screen and (max-width: 600px) {
 }

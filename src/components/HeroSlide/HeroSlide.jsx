@@ -65,33 +65,33 @@ export default function HeroSlide({typeOF, typeHero }) {
           {
             
 
-                upcomingMovie.map((oneMovie, index)=>{
-                        const background = apiConfig.originalImage( oneMovie.backdrop_path ? oneMovie.backdrop_path : oneMovie.poster_path)
+            upcomingMovie.map((oneMovie, index)=>{
+                    const background = apiConfig.originalImage( oneMovie.backdrop_path ? oneMovie.backdrop_path : oneMovie.poster_path)
 
 
-                    return(
+                return(
 
-                        <SwiperSlide key={index}>  
-                            <div style={{ backgroundImage: `url(${background})` }}  className="hero-container">
+                    <SwiperSlide key={index}>  
+                        <div style={{ backgroundImage: `url(${background})` }}  className="hero-container">
 
-                                <div className="hero-grid">
-                                    <div className="hero-grid-1">
-                                        <h1 className="hero-title">{oneMovie.title || oneMovie.name}</h1>
-                                        <h5 className="hero-overview">{oneMovie.overview.substring(0, 200)}...</h5>
+                            <div className="hero-grid">
+                                <div className="hero-grid-1">
+                                    <h1 className="hero-title">{oneMovie.title || oneMovie.name}</h1>
+                                    <h5 className="hero-overview">{oneMovie.overview.substring(0, 200)}...</h5>
 
-                                        <div className="hero-btns-container">
-                                                <Link  to={`/detail/${typeOF}/${oneMovie.id}`}  className="btn1">Watch Now</Link>
-                                                <button className="btn1 btn-outline">Watch Trailer</button>
-                                        </div>
-                                    </div>
-                                    <div className="">
-                                        <img className="hero-img" src={`${apiConfig.w500Image(oneMovie.poster_path)}`} alt="" />
+                                    <div className="hero-btns-container">
+                                            <Link  to={`/detail/${typeOF}/${oneMovie.id}`}  className="btn1">Watch Now</Link>
+                                            <button className="btn1 btn-outline">Watch Trailer</button>
                                     </div>
                                 </div>
+                                <div className="container-hero-img">
+                                    <img className="hero-img" src={`${apiConfig.w500Image(oneMovie.poster_path)}`} alt="" />
+                                </div>
                             </div>
-                        </SwiperSlide>
-                    )
-                })
+                        </div>
+                    </SwiperSlide>
+                )
+            })
           }
       </Swiper>
     </>
