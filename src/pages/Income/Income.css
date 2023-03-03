@@ -68,12 +68,22 @@
 @media screen and (max-width: 600px) {
   .home-logins-title {
     font-size: 2rem !important;
+    /* padding-top: 2rem !important; */
+    transform: translateY(35px);
+    margin: 0.5% !important;
   }
   .home-logins-parrafo {
-    font-weight: 500 !important;
-    text-align: center;
+    visibility: hidden;
   }
   .btn1-2 {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
+  .btn1 {
+    padding: 0.5rem 1rem;
+  }
+  .contenedor-botones {
+    /* flex-direction: column; */
+    margin: 0;
   }
 }
