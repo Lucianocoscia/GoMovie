@@ -1,6 +1,7 @@
 import React from 'react'
 import './Footer.css'
 // import { useEffect, useState } from 'react';
+import Logo from './GoMovie-icon-left-official.png'
 
 const Footer = () => {
   //logica para obtener la url y pasarla como parametro
@@ -10,6 +11,7 @@ const Footer = () => {
             <>
              <footer >
                   <div className='container-grid'>
+                  <img className='logo-footer' src={Logo}/>
                       <div className='grid-footer'>
 
                         <div>

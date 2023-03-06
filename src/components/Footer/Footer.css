@@ -1,13 +1,14 @@
 footer {
   background-image: url(./backgroundfooter.jpg);
-  height: 30vh;
-  padding-top: 4rem;
+  height: 35vh;
+  /* padding-top: 4rem; */
   width: 100%;
   /* position: fixed; */
   bottom: 0;
 }
 .container-grid {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100%;
@@ -16,6 +17,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 1fr;
+  margin-bottom: 2%;
+  gap: 5rem;
   /* gap: 5rem;
 
   margin-left: 5%;
@@ -31,7 +34,15 @@ footer {
   cursor: pointer;
   color: #6d0110;
 }
+.logo-footer {
+  width: 250px;
+  height: 250px;
+  overflow: hidden;
+}
 @media screen and (max-width: 1023px) {
 }
 @media screen and (max-width: 600px) {
+  .grid-footer {
+    gap: 0;
+  }
 }

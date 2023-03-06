@@ -8,14 +8,14 @@ import { apiConfig, category } from '../../config/config'
 
 import toast, {Toaster} from 'react-hot-toast'
 
-const Trailer = () => {
+const Trailer = ({typeCategory, ID}) => {
   let { id, typeOF } = useParams();
   const [Video, setVideo] = useState([]);
 
   const getTrailer = () =>{
 
-    let endPointVideos = ` ${apiConfig.baseURL}${category.movie}/${id}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
-    let endPointVideosTV = ` ${apiConfig.baseURL}${category.tv}/${id}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
+    let endPointVideos = ` ${apiConfig.baseURL}${typeCategory}/${id || ID}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
+    let endPointVideosTV = ` ${apiConfig.baseURL}${typeCategory}/${id || ID}/videos?api_key=${apiConfig.apiKey}&language=en-US`;
 
     if(typeOF === "movie"){
 
@@ -26,7 +26,6 @@ const Trailer = () => {
           setVideo( trailer ? trailer : videoData.results.slice(0, 1))
         }
       }).catch((error) => {
-        // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
         toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde ', {style: {
           borderRadius: '10px',
           background: '#333',
@@ -42,7 +41,7 @@ const Trailer = () => {
         }
         console.log(videoData);
       }).catch((error) => {
-        toast.error('Hubo un problema con la conexion al servidor, intenta mas tarde' , {style: {
+        toast.error('Lo sentimos, no encontramos un trailer para esta pelicula' , {style: {
           borderRadius: '10px',
           background: '#333',
           color: '#fff',
@@ -58,7 +57,7 @@ const Trailer = () => {
     <>
       <Toaster position="top-center"/>
       <div className='trailer-container'>
-          <h5>International Trailer</h5>
+          {/* <h5>International Trailer</h5> */}
           <iframe key={Video.i} className='iframe-trailer' src={`https://www.youtube.com/embed/${Video.key}`} ></iframe>
 
       </div>

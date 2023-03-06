@@ -1,5 +1,6 @@
 import React from 'react'
-import {  useEffect , useState } from 'react';
+import {  useEffect , useState} from 'react';
+import { useParams } from 'react-router-dom';
 import '../../pages/ItemDetailContainer/ItemDetail.css';
 import Trailer from './Trailer';
 import Casts from './Casts';
@@ -7,6 +8,7 @@ import Similar from './Similar';
 import { apiConfig } from '../../config/config';
 import '../../pages/ItemDetailContainer/ItemDetail.css'
 const ItemDetail = ({detailID}) => {
+  let {  typeOF } = useParams();
 
   const [loader, setLoader] = useState(true); 
   useEffect (() => {
@@ -60,7 +62,7 @@ const ItemDetail = ({detailID}) => {
           </section>
 
           <section className='container'>
-              <Trailer /> 
+              <Trailer typeCategory={typeOF} /> 
           </section>
           <section className='container mb-5' >
             <div>
