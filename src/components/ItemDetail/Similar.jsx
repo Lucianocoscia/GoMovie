@@ -46,7 +46,7 @@ const Similar = ({detailID}) => {
         axios.get(endpointSimilarTV).then((response) => {
           const similarMovie = response.data;
           setSimilar(similarMovie.results);
-          console.log(similarMovie);
+          // console.log(similarMovie);
         }).catch((error) => {
           // swAlert("Oops", "Hubo un problema con la conexion al servidor, intenta mas tarde", "error");
           toast.error("Hubo un problema con la conexion al servidor, intenta mas tarde", {style: {

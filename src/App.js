@@ -29,11 +29,9 @@ function App() {
 
   useEffect(() => {
     const favsInLocal = localStorage.getItem("favs"); //Levanta lo q tengo en storage
-    // console.log(favsInLocal);
 
     if (favsInLocal != null) {
       const favsArray = JSON.parse(favsInLocal);
-      // console.log(favsArray);
       setFavorites(favsArray);
     }
   }, []);
@@ -41,7 +39,7 @@ function App() {
   const addOrRemoveFromFavs = (e) => {
     //Comienza logica de favoritos
     const favMovies = localStorage.getItem("favs"); //Levanta lo q tengo en storage
-
+    // console.log("levanto lo q tengo en storage", favMovies);
     let tempMoviesInFavs;
 
     if (favMovies === null) {
@@ -49,9 +47,9 @@ function App() {
     } else {
       tempMoviesInFavs = JSON.parse(favMovies); // como el storage lo trae en string lo paso a objeto
     }
-    console.log(tempMoviesInFavs);
 
     const btn = e.currentTarget; //capto el bootn
+
     const parent = btn.parentElement; // capto el padre del boton
 
     // capto los datos de cada elemento
@@ -61,12 +59,15 @@ function App() {
     const movieData = {
       imgUrl,
       dataMovieID: btn.dataset.movieId,
+      category: btn.dataset.category,
     };
+
     // console.log(movieData);
+
     let movieIsInArray = tempMoviesInFavs.find((oneMovie) => {
       return oneMovie.dataMovieID === movieData.dataMovieID;
     });
-    // console.log(movieIsInArray);
+    // console.log("me retorna la pelicula con el mismo id", movieIsInArray);
 
     if (!movieIsInArray) {
       tempMoviesInFavs.push(movieData); // lo paso al array
@@ -74,30 +75,23 @@ function App() {
       setFavorites(tempMoviesInFavs); // para q actualice el estado y no haga falta recargar la pagina
       // console.log(tempMoviesInFavs);
 
-      console.log("Se agrego la pelicula");
+      // console.log("Se agrego la pelicula");
       toast.success("Se agrego la pelicula a favoritos!");
-      // swAlert("Good job!", "Se agrego la pelicula a favoritos!", "success"); //PONER SWAL
     } else {
-      console.log(
-        "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos "
-      );
-      toast.error(
-        "La pelicula ya fue agregada, por lo tanto se eliminara de favoritos",
-        {
-          style: {
-            borderRadius: "10px",
-            background: "#333",
-            color: "#fff",
-          },
-        }
-      );
-      // PONER SWAL
-
       let removeFromFavs = tempMoviesInFavs.filter((oneMovie) => {
         return oneMovie.dataMovieID !== movieData.dataMovieID;
       }); // djea las peliculas con distinto id, y la q es igual la saca
       localStorage.setItem("favs", JSON.stringify(removeFromFavs)); // piso lo del local y lo guardo ahi
       setFavorites(removeFromFavs);
+      // console.log(removeFromFavs);
+      // console.log("La pelicula se elimino de favoritos");
+      toast.error("La pelicula se elimino de favoritos", {
+        style: {
+          borderRadius: "10px",
+          background: "#333",
+          color: "#fff",
+        },
+      });
     }
   };
 
@@ -121,7 +115,7 @@ function App() {
   return (
     <>
       <Toaster position="top-center" />
-      <Header favorites={favorites} />
+      <Header />
 
       <Routes>
         <Route path="/" element={<Presentacion />} />
@@ -162,7 +156,7 @@ function App() {
           }
         />
         <Route
-          path="/favorites"
+          path="/favorites/"
           element={
             <Favorites
               addOrRemoveFromFavs={addOrRemoveFromFavs}

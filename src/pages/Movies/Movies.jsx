@@ -1,4 +1,4 @@
-import React ,  { useRef }from 'react'
+import React ,  { useEffect }from 'react'
 import HeroSlide from '../../components/HeroSlide/HeroSlide'
 import MoviesList from './MoviesList'
 import './Movies.css'
@@ -10,7 +10,10 @@ import { Navigate } from "react-router-dom";
 const Movies = ({ contador, handleClick, handleClickLess , addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
 
-
+  useEffect(()=>{
+    window.scrollTo(0,0)
+    }
+  , [])
   return (
     <>
       {/* {!token  && <Navigate to='/'/>} */}

@@ -39,7 +39,7 @@ const Trailer = ({typeCategory, ID}) => {
           const trailer = videoData.results.find((video) => video.name === "Official Trailer");
           setVideo( trailer ? trailer : videoData.slice(0, 1))
         }
-        console.log(videoData);
+        // console.log(videoData);
       }).catch((error) => {
         toast.error('Lo sentimos, no encontramos un trailer para esta pelicula' , {style: {
           borderRadius: '10px',
