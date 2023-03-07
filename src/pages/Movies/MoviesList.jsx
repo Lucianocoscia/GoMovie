@@ -40,15 +40,15 @@ const MoviesList = ({ contador, typeOF, addOrRemoveFromFavs}) => {
                 {
                     moviesList.map((oneMovie, index)=>{
                         return(
-                            <div key={index} className="">
-                            <Item 
-                                category={typeOF}
-                                addOrRemoveFromFavs={addOrRemoveFromFavs}
-                                id= {oneMovie.id}
-                                title={oneMovie.title}
-                                overview={oneMovie.overview.substring(0, 100)}
-                                poster_path={`${apiConfig.w500Image(oneMovie.poster_path)}`}
-                            />
+                            <div data-aos="fade-in" data-aos-duration="1500" key={index} className="">
+                              <Item 
+                                  category={typeOF}
+                                  addOrRemoveFromFavs={addOrRemoveFromFavs}
+                                  id= {oneMovie.id}
+                                  title={oneMovie.title}
+                                  overview={oneMovie.overview.substring(0, 100)}
+                                  poster_path={`${apiConfig.w500Image(oneMovie.poster_path)}`}
+                              />
                             </div>
                         )
                     })

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { /* Navigate, */ Link } from "react-router-dom";
 import './Home.css'
 import PopularMovies from "../../components/Popular/PopularMovies";
@@ -12,7 +12,10 @@ import { movieType, category } from "../../config/config";
 
 const Home = ({/* contador, handleClick, handleClickLess, */addOrRemoveFromFavs}) => {
   let token=  sessionStorage.getItem("token");
- 
+  useEffect(()=>{
+    window.scrollTo(0,0)
+    }
+  , [])
   return (
 
     <>
@@ -20,16 +23,17 @@ const Home = ({/* contador, handleClick, handleClickLess, */addOrRemoveFromFavs}
     
       <HeroSlide typeHero={movieType.upcoming} typeOF={category.movie} />
       
-      <div className="mt-5 swiper-movies">
+      <div data-aos="fade-in" data-aos-duration="1500"  className="mt-5 swiper-movies">
         <div className="container-title-and-link">
           <h5 className="mt-3">Trending Movies</h5>
           <Link className="link-view-more" to={'/movies'}>View More</Link>
           {/* <ViewMore contador={contador} handleClick={handleClick} handleClickLess={handleClickLess} /> */}
         </div>
-        <PopularMovies /* contador={contador}  */addOrRemoveFromFavs={addOrRemoveFromFavs}/>
+        <PopularMovies  /* contador={contador}  */addOrRemoveFromFavs={addOrRemoveFromFavs}/>
 
       </div>
-      <div className="swiper-movies">
+
+      <div data-aos="fade-in" data-aos-duration="1500" className="swiper-movies">
         <div className="container-title-and-link">
           <h5>Top Rated Movies</h5>
           <Link className="link-view-more" to={'/movies'}>View More</Link>
@@ -37,7 +41,7 @@ const Home = ({/* contador, handleClick, handleClickLess, */addOrRemoveFromFavs}
         <TopRated addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
 
-      <div className=" swiper-movies swiper-movies-1">
+      <div data-aos="fade-in" data-aos-duration="1500" className=" swiper-movies swiper-movies-1">
         <div className="container-title-and-link">
           <h5>Trending TV</h5>
           <Link className="link-view-more" to={'/tvshow'}>View More</Link>
@@ -45,7 +49,7 @@ const Home = ({/* contador, handleClick, handleClickLess, */addOrRemoveFromFavs}
         <PopularTv addOrRemoveFromFavs={addOrRemoveFromFavs}/>
       </div>
 
-      <div className="swiper-movies">
+      <div data-aos="fade-in" data-aos-duration="1500" className="swiper-movies">
         <div className="container-title-and-link">
           <h5>Top Rated TV</h5>
           <Link className="link-view-more" to={'/tvshow'}>View More</Link>

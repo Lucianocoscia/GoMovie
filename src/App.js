@@ -1,9 +1,12 @@
 //Libraries
 import { Routes, Route } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import toast, { Toaster } from "react-hot-toast";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 //Components
 import Header from "./components/Header/Header";
@@ -19,10 +22,12 @@ import Favorites from "./components/Favorites/Favorites";
 import Search from "./pages/Search/Search";
 import Movies from "./pages/Movies/Movies";
 import TvShow from "./pages/TvShow/TvShow";
+import Contact from "./pages/Contact/Contact";
+
 //Styles
 import "./index.css";
-import toast, { Toaster } from "react-hot-toast";
 
+AOS.init();
 function App() {
   //logica para levantar el estado y compartirlo a favoritos
   const [favorites, setFavorites] = useState([]);
@@ -175,6 +180,7 @@ function App() {
             />
           }
         />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
       <Footer />
     </>

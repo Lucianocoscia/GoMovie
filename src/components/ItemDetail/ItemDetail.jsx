@@ -35,7 +35,7 @@ const ItemDetail = ({detailID}) => {
 
           <section className='detail-container container'>
 
-            <div className='grid-container'>
+            <div  data-aos="fade-in" data-aos-duration="1500" className='grid-container'>
 
               <div className='detail-poster-container'><img className='detail-poster' src={`${apiConfig.w500Image(detailID.poster_path)}`} alt={detailID.original_title}  /></div>
 

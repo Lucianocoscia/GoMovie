@@ -41,7 +41,7 @@ const TvShowList = ({contador, typeOF, addOrRemoveFromFavs}) => {
         {
             tvShowList.map((oneMovie, index)=>{
                 return(
-                    <div key={index} className="">
+                    <div data-aos="fade-in" data-aos-duration="1500" key={index} className="">
                     <Item 
                         category={typeOF}
                         addOrRemoveFromFavs={addOrRemoveFromFavs}
